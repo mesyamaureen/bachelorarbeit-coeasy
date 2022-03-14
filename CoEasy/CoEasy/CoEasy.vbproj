@@ -150,9 +150,34 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Controllers\AlleCoworkersController.vb" />
+    <Compile Include="Controllers\AlleMitarbeiterController.vb" />
+    <Compile Include="Controllers\AlleTicketsController.vb" />
+    <Compile Include="Controllers\AnmeldungController.vb" />
+    <Compile Include="Controllers\CoEasyController.vb" />
+    <Compile Include="Controllers\CoEasyCoworkerController.vb" />
+    <Compile Include="Controllers\CoworkerController.vb" />
+    <Compile Include="Controllers\EinkaufController.vb" />
+    <Compile Include="Controllers\EinkaufspositionController.vb" />
+    <Compile Include="Controllers\MeinProfilController.vb" />
+    <Compile Include="Controllers\MitarbeiterController.vb" />
+    <Compile Include="Controllers\TicketController.vb" />
+    <Compile Include="Controllers\WLANController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Benutzer.vb" />
+    <Compile Include="Models\Coworker.vb" />
+    <Compile Include="Models\CoworkerListe.vb" />
+    <Compile Include="Models\Einkauf.vb" />
+    <Compile Include="Models\Einkaufsliste.vb" />
+    <Compile Include="Models\Einkaufsposition.vb" />
+    <Compile Include="Models\EinkaufspositionListe.vb" />
+    <Compile Include="Models\Mitarbeiter.vb" />
+    <Compile Include="Models\MitarbeiterListe.vb" />
+    <Compile Include="Models\Ticket.vb" />
+    <Compile Include="Models\TicketListe.vb" />
+    <Compile Include="Models\WLAN.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -169,6 +194,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Controllers\HomeController.vb" />
+    <Compile Include="ViewModel\BenutzerViewModel.vb" />
+    <Compile Include="ViewModel\CoworkerViewModel.vb" />
+    <Compile Include="ViewModel\EinkaufspositionViewModel.vb" />
+    <Compile Include="ViewModel\EinkaufViewModel.vb" />
+    <Compile Include="ViewModel\MitarbeiterViewModel.vb" />
+    <Compile Include="ViewModel\TicketViewModel.vb" />
+    <Compile Include="ViewModel\WLANViewModel.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -179,6 +211,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CoEasy_DB.mdf" />
+    <Content Include="App_Data\CoEasy_DB_log.ldf">
+      <DependentUpon>CoEasy_DB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -209,6 +245,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Anmeldung\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -238,8 +275,22 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Bilder\" />
+    <Folder Include="Views\AlleCoworkers\" />
+    <Folder Include="Views\AlleEinkauefe\" />
+    <Folder Include="Views\AlleEinkaufspositionen\" />
+    <Folder Include="Views\AlleMitarbeiter\" />
+    <Folder Include="Views\AlleTickets\" />
+    <Folder Include="Views\AlleWLAN\" />
+    <Folder Include="Views\CoEasyCoworker\" />
+    <Folder Include="Views\CoEasy\" />
+    <Folder Include="Views\Coworker\" />
+    <Folder Include="Views\Einkaufsposition\" />
+    <Folder Include="Views\Einkauf\" />
+    <Folder Include="Views\MeinProfil\" />
+    <Folder Include="Views\Mitarbeiter\" />
+    <Folder Include="Views\Ticket\" />
+    <Folder Include="Views\WLAN\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
