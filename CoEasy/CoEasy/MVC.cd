@@ -15,9 +15,6 @@
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Einkaufsliste.vb</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Einkauf" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="CoEasy.Einkauf">
     <Position X="9.25" Y="3" Width="1.5" />
@@ -41,21 +38,21 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="CoEasy.EinkaufspositionListe">
-    <Position X="14.75" Y="3" Width="2" />
+    <Position X="6.25" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Models\EinkaufspositionListe.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.Ticket">
-    <Position X="18.25" Y="1.75" Width="1.5" />
+    <Position X="14.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACCAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAQABA=</HashCode>
       <FileName>Models\Ticket.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.WLAN">
-    <Position X="18.25" Y="5.5" Width="1.5" />
+    <Position X="14.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Models\WLAN.vb</FileName>
