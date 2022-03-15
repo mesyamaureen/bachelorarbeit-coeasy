@@ -1,18 +1,30 @@
-﻿Public Class Einkaufsposition
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.ComponentModel
+
+Public Class Einkaufsposition
     Private mintEinkaufspositionID As Integer
     Private mintAnzahl As Integer
     Private mdblTotalpreis As Double
+    Private mTicket As Ticket
+    Private mWlan As WLAN
+    Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
 
     Sub New()
         mintEinkaufspositionID = Nothing
         mintAnzahl = Nothing
         mdblTotalpreis = Nothing
+        mTicket = Nothing
+        mWlan = Nothing
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double)
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pTicket As Ticket, pWlan As WLAN)
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahl = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
+        mTicket = pTicket
+        mWlan = pWlan
     End Sub
 
     Public Property EinkaufspositionID As Integer
@@ -40,6 +52,50 @@
         End Set
     End Property
 
+    Public Property Ticket As Ticket
+        Get
+            Return mTicket
+        End Get
+        Set(value As Ticket)
+            mTicket = value
+        End Set
+    End Property
+    Public Property Wlan As WLAN
+        Get
+            Return mWlan
+        End Get
+        Set(value As WLAN)
+            mWlan = value
+        End Set
+    End Property
+    Public Property EinkaufspositionListe As List(Of Einkaufsposition)
+        Get
+            Return mlstEinkaufspositionliste
+        End Get
+        Set(value As List(Of Einkaufsposition))
+            mlstEinkaufspositionliste = value
+        End Set
+    End Property
+
     'Konstruktor Entity
+    Sub New(peinkposEntity As EinkaufspositionEntity)
+        mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
+        mintAnzahl = peinkposEntity.Anzahl
+        mdblTotalpreis = peinkposEntity.Totalpreis
+        mTicket.TicketID = peinkposEntity.TicketIdFk
+        mWlan.WlanID = peinkposEntity.WlanIdFk
+    End Sub
+
     'gibEntity
+    Public Function gibAlsEinkPositionEntity() As EinkaufspositionEntity
+        Dim einkPosEntity As EinkaufspositionEntity
+        einkPosEntity = New EinkaufspositionEntity
+
+        einkPosEntity.EinkaufspositionIdPk = mintEinkaufspositionID
+        einkPosEntity.Anzahl = mintAnzahl
+        einkPosEntity.TicketIdFk = mTicket.TicketID
+        einkPosEntity.Totalpreis = mdblTotalpreis
+        einkPosEntity.WlanIdFk = mWlan.WlanID
+        Return einkPosEntity
+    End Function
 End Class

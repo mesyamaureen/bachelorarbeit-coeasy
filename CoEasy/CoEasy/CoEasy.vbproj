@@ -287,6 +287,7 @@
     <Content Include="DataAccess\CoEasy.edmx.diagram">
       <DependentUpon>CoEasy.edmx</DependentUpon>
     </Content>
+    <Content Include="MVC.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
