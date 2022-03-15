@@ -5,8 +5,12 @@ Namespace Controllers
         Inherits Controller
 
         ' GET: CoEasy
-        Function Index() As ActionResult
+        Function Startseite() As ActionResult
             Return View()
         End Function
+
+        'laden alle Einkäufe
+        ' GET: /Startseite
+
     End Class
 End Namespace
