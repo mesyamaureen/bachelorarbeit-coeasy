@@ -3,6 +3,7 @@
     Private mstrAdresse As String
     Private mstrSteuernummer As String
     Private mstrFirmenname As String
+    Private mEinkauf As Einkauf
 
     Sub New()
         mstrAdresse = String.Empty
@@ -43,6 +44,15 @@
         End Set
     End Property
 
+    Public Property Einkauf As Einkauf
+        Get
+            Return mEinkauf
+        End Get
+        Set(value As Einkauf)
+            mEinkauf = value
+        End Set
+    End Property
+
     Sub New(pCowEntity As CoworkerEntity)
         BenutzerID = pCowEntity.CoworkerIdPk
         Benutzername = pCowEntity.Benutzername
@@ -66,6 +76,7 @@
         cowE.Passwort = Passwort
         cowE.Steuernummer = Steuernummer
         cowE.Vorname = Vorname
+        cowE.EinkaufIdFk = Einkauf
         Return cowE
     End Function
 

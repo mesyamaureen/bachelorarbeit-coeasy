@@ -17,7 +17,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.Einkauf">
-    <Position X="9.25" Y="3" Width="1.5" />
+    <Position X="13.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABAAAAEAAAAAIAAwQCAACAAAAAKAAAACAAQAAAABAA=</HashCode>
       <FileName>Models\Einkauf.vb</FileName>
@@ -27,7 +27,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="CoEasy.Einkaufsposition">
-    <Position X="12.25" Y="3" Width="1.5" />
+    <Position X="16.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gABAAAAAAAAAAIACAQAQAAAAgAADAAAAAAAAAEAAJAA=</HashCode>
       <FileName>Models\Einkaufsposition.vb</FileName>
@@ -45,17 +45,41 @@
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.Ticket">
-    <Position X="14.75" Y="2" Width="1.5" />
+    <Position X="18.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACCAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAQABA=</HashCode>
       <FileName>Models\Ticket.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.WLAN">
-    <Position X="14.75" Y="5.5" Width="1.5" />
+    <Position X="18.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Models\WLAN.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Benutzer">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAADAAAAAAAAAAAAQAAAAAAAgACAACQQgCgAA=</HashCode>
+      <FileName>Models\Benutzer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Coworker">
+    <Position X="11.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAQAgAAAAQAACIAAAAABAAAAAAQgAAAAA=</HashCode>
+      <FileName>Models\Coworker.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Einkauf" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CoEasy.Mitarbeiter">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Mitarbeiter.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
