@@ -40,7 +40,7 @@ Namespace Controllers
                         System.Web.HttpContext.Current.Session("BenutzerID") = benCoworker.CoworkerIdPk.ToString()
                         System.Web.HttpContext.Current.Session("Benutzername") = benCoworker.Benutzername.ToString()
                         System.Web.HttpContext.Current.Session("Benutzertyp") = "Coworker"
-                        Return RedirectToAction("Einkauefe", "CoEasy")
+                        Return RedirectToAction("Einkauefe", "CoEasyCoworker")
                     Else
                         'Dim mit As MitarbeiterEntity
                         Dim benMit As MitarbeiterEntity

@@ -10,20 +10,23 @@ Public Class Einkaufsposition
     Private mTicket As Ticket
     Private mWlan As WLAN
     Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
+    Private mstrTicket As String
 
     Sub New()
         mintEinkaufspositionID = Nothing
         mintAnzahl = Nothing
         mdblTotalpreis = Nothing
-        mTicket = Nothing
+        'mTicket = Nothing
+        mstrTicket = String.Empty
         mWlan = Nothing
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pTicket As Ticket, pWlan As WLAN)
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN)
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahl = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
-        mTicket = pTicket
+        'mTicket = pTicket
+        mstrTicket = pstrTicket
         mWlan = pWlan
     End Sub
 
@@ -52,14 +55,23 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    Public Property Ticket As Ticket
+    Public Property Ticket As String
         Get
-            Return mTicket
+            Return mstrTicket
         End Get
-        Set(value As Ticket)
-            mTicket = value
+        Set(value As String)
+            mstrTicket = value
         End Set
     End Property
+
+    'Public Property Ticket As Ticket
+    '    Get
+    '        Return mTicket
+    '    End Get
+    '    Set(value As Ticket)
+    '        mTicket = value
+    '    End Set
+    'End Property
     Public Property Wlan As WLAN
         Get
             Return mWlan
@@ -82,7 +94,8 @@ Public Class Einkaufsposition
         mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
         mintAnzahl = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis
-        mTicket.TicketID = peinkposEntity.TicketIdFk
+        'mTicket.TicketID = peinkposEntity.TicketIdFk
+        mstrTicket = peinkposEntity.tblTicket.Bezeichnung
         mWlan.WlanID = peinkposEntity.WlanIdFk
     End Sub
 

@@ -10,23 +10,38 @@ Public Class Einkauf
     Private mdatErstelldatum As Date
     Private mlstEinkauf As List(Of Einkauf)
     Private mEinkaufsposition As Einkaufsposition
+    Private mEinkaufspositionID As Integer
 
     Sub New()
         mintEinkaufID = Nothing
         mdblTotalpreis = Nothing
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
+        'mEinkaufspositionID = Nothing
+        'mEinkaufsposition.EinkaufspositionID = Nothing
         mEinkaufsposition = Nothing
     End Sub
 
-    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pEinkaufsposition As Einkaufsposition)
+    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pEinkaufsposition As Einkaufsposition) 'pEinkaufspositionID As Integer)
         mintEinkaufID = pintEinkaufID
         mdblTotalpreis = pdblTotalpreis
         mstrStatus = pstrStatus
         mdatErstelldatum = pdatErstelldatum
+        'mEinkaufspositionID = pEinkaufspositionID
+        'mEinkaufsposition.EinkaufspositionID = pEinkaufspositionID
         mEinkaufsposition = pEinkaufsposition
-
     End Sub
+
+    'Konstruktor: Entity
+    Sub New(peinkEntity As EinkaufEntity)
+        mintEinkaufID = peinkEntity.EinkaufIdPk
+        'mEinkaufspositionID = peinkEntity.EinkaufspositionIdFk
+        mEinkaufsposition = New Einkaufsposition(peinkEntity.EinkaufspositionIdFk, peinkEntity.tblEinkaufsposition.Anzahl, peinkEntity.tblEinkaufsposition.Totalpreis, peinkEntity.tblEinkaufsposition.tblTicket.Bezeichnung, Nothing) '.EinkaufspositionID = peinkEntity.EinkaufspositionIdFk
+        mdblTotalpreis = peinkEntity.Totalpreis
+        mstrStatus = peinkEntity.Status
+        mdatErstelldatum = peinkEntity.Erstelldatum
+    End Sub
+
 
     Public Property EinkaufID As Integer
         Get
@@ -61,6 +76,14 @@ Public Class Einkauf
             mEinkaufsposition = value
         End Set
     End Property
+    'Public Property EinkaufspositionID As Integer
+    '    Get
+    '        Return mEinkaufspositionID
+    '    End Get
+    '    Set(value As Integer)
+    '        mEinkaufspositionID = value
+    '    End Set
+    'End Property
 
     Public Property Erstelldatum As Date
         Get
@@ -80,21 +103,13 @@ Public Class Einkauf
         End Set
     End Property
 
-    'Konstruktor: Entity
-    Sub New(peinkEntity As EinkaufEntity)
-        mintEinkaufID = peinkEntity.EinkaufIdPk
-        mEinkaufsposition.EinkaufspositionID = peinkEntity.EinkaufspositionIdFk
-        mdblTotalpreis = peinkEntity.Totalpreis
-        mstrStatus = peinkEntity.Status
-        mdatErstelldatum = peinkEntity.Erstelldatum
-    End Sub
-
     'gibEntity
     Public Function gibAlsEinkaufEntity() As EinkaufEntity
         Dim einkE As EinkaufEntity
         einkE = New EinkaufEntity
 
         einkE.EinkaufIdPk = mintEinkaufID
+        'einkE.EinkaufspositionIdFk = mEinkaufspositionID
         einkE.EinkaufspositionIdFk = mEinkaufsposition.EinkaufspositionID
         einkE.Erstelldatum = mdatErstelldatum
         einkE.Status = mstrStatus

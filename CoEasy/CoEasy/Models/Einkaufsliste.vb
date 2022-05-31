@@ -4,22 +4,22 @@ Imports System.Web.Services.Protocols
 Imports System.ComponentModel
 
 Public Class Einkaufsliste
-    Private mlstEinkauf As List(Of Einkauf)
+    Private mlstEinkaeufe As List(Of Einkauf)
 
     Public Sub New()
-        mlstEinkauf = New List(Of Einkauf)
+        mlstEinkaeufe = New List(Of Einkauf)
     End Sub
 
     Public Sub New(plstEinkauf As List(Of Einkauf))
-        mlstEinkauf = plstEinkauf
+        mlstEinkaeufe = plstEinkauf
     End Sub
 
     Public Property Einkauf As List(Of Einkauf)
         Get
-            Return mlstEinkauf
+            Return mlstEinkaeufe
         End Get
         Set(value As List(Of Einkauf))
-            mlstEinkauf = value
+            mlstEinkaeufe = value
         End Set
     End Property
 End Class

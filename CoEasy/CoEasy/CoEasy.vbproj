@@ -408,6 +408,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\CoEasy\Einkaufsliste.vbhtml" />
     <Content Include="Views\Anmeldung\Einloggen.vbhtml" />
+    <Content Include="Views\CoEasy\Einkaeufe.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
