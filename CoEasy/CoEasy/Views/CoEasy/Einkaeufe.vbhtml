@@ -22,12 +22,12 @@ End Code
                 <div>hallo Peter</div>
                 <div>
                     <ul>
-                        <li>Startseite</li>
-                        <li>Tickets</li>
-                        <li>Coworkers</li>
-                        <li>Mitarbeiter</li>
-                        <li>Mein Profil</li>
-                        <li>Ausloggen</li>
+                        <li>@Html.ActionLink("Startseite", "Einkaeufe", "CoEasy")</li>
+                        <li>@Html.ActionLink("Tickets", "Tickets", "AlleTickets")</li>
+                        <li>@Html.ActionLink("Coworkers", "Coworkers", "AlleCoworkers")</li>
+                        <li>@Html.ActionLink("Mitarbeiter", "Mitarbeiter", "AlleMitarbeiter")</li>
+                        <li>@Html.ActionLink("Mein Profil", "Profil", "MeinProfil") Profil</li>
+                        <li>@Html.ActionLink("Ausloggen", "Ausloggen", "Anmeldung")</li>
                     </ul>
                 </div>
             </div>
