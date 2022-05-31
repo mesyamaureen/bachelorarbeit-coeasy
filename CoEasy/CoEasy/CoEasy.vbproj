@@ -395,7 +395,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\CoEasy\Startseite.vbhtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -406,7 +405,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\CoEasy\Einkaufsliste.vbhtml" />
     <Content Include="Views\Anmeldung\Einloggen.vbhtml" />
     <Content Include="Views\CoEasy\Einkaeufe.vbhtml" />
     <Content Include="Views\MeinProfil\Profil.vbhtml" />
