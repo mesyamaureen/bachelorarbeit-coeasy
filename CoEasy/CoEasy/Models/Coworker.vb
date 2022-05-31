@@ -1,4 +1,9 @@
-﻿Public Class Coworker
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.ComponentModel
+
+Public Class Coworker
     Inherits Benutzer
     Private mstrAdresse As String
     Private mstrSteuernummer As String
@@ -76,7 +81,7 @@
         cowE.Passwort = Passwort
         cowE.Steuernummer = Steuernummer
         cowE.Vorname = Vorname
-        cowE.EinkaufIdFk = Einkauf
+        cowE.EinkaufIdFk = Einkauf.EinkaufID
         Return cowE
     End Function
 

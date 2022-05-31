@@ -1,4 +1,8 @@
-﻿Public Class Ticket
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.ComponentModel
+Public Class Ticket
     Private mintTicketID As Integer
     Private mstrBezeichnung As String
     Private mdblPreis As Double

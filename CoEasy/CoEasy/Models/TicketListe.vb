@@ -1,4 +1,8 @@
-﻿Public Class TicketListe
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.ComponentModel
+Public Class TicketListe
     Private mlstTickets As List(Of Ticket)
 
     Public Sub New()

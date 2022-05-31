@@ -258,6 +258,7 @@
     <Content Include="App_Data\CoEasy_DB_log.ldf">
       <DependentUpon>CoEasy_DB.mdf</DependentUpon>
     </Content>
+    <Content Include="Bilder\2a6d0db3fe8f4fc9a7081f9879ace954.png" />
     <Content Include="Bilder\CoEasy-Logo.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -394,7 +395,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\Anmeldung\Index.vbhtml" />
     <Content Include="Views\CoEasy\Startseite.vbhtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -406,6 +406,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\CoEasy\Einkaufsliste.vbhtml" />
+    <Content Include="Views\Anmeldung\Einloggen.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

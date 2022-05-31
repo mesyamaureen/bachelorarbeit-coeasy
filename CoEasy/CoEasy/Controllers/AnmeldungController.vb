@@ -1,19 +1,19 @@
 ﻿Imports System.Web.Mvc
+Imports CoEasy.Benutzer
 
 Namespace Controllers
     Public Class AnmeldungController
         Inherits Controller
-        Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
+        'Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
 
-        Private db As CoEasy_DBEntities = New CoEasy_DBEntities '= New collabEntities
+        'Private db As CoEasy_DBEntities = New CoEasy_DBEntities '= New collabEntities
 
         ' GET: Anmeldung
-        ' GET: AlleProfile
         Function Index() As ActionResult
             Return View()
         End Function
 
-
+        <HttpGet>
         Function Einloggen() As ActionResult
             Return View()
         End Function
@@ -40,9 +40,9 @@ Namespace Controllers
                         System.Web.HttpContext.Current.Session("BenutzerID") = benCoworker.CoworkerIdPk.ToString()
                         System.Web.HttpContext.Current.Session("Benutzername") = benCoworker.Benutzername.ToString()
                         System.Web.HttpContext.Current.Session("Benutzertyp") = "Coworker"
-                        Return RedirectToAction("Index", "CoEasyCoworker")
+                        Return RedirectToAction("Einkauefe", "CoEasy")
                     Else
-                        Dim mit As MitarbeiterEntity
+                        'Dim mit As MitarbeiterEntity
                         Dim benMit As MitarbeiterEntity
 
                         For Each mit In db.tblMitarbeiter.ToList
@@ -55,7 +55,7 @@ Namespace Controllers
                             System.Web.HttpContext.Current.Session("BenutzerID") = benMit.MitarbeiterIdPk.ToString()
                             System.Web.HttpContext.Current.Session("Benutzername") = benMit.Benutzername.ToString()
                             System.Web.HttpContext.Current.Session("Benutzertyp") = "Mitarbeiter"
-                            Return RedirectToAction("Startseite", "CoEasy")
+                            Return RedirectToAction("Einkaeufe", "CoEasy")
                         End If
                     End If
                 End Using

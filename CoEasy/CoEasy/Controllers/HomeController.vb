@@ -2,7 +2,7 @@
     Inherits System.Web.Mvc.Controller
 
     Function Index() As ActionResult
-        Return RedirectToAction("Index", "Anmeldung")
+        Return RedirectToAction("Einloggen", "Anmeldung")
     End Function
 
     Function About() As ActionResult
