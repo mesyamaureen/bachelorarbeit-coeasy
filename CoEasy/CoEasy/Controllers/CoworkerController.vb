@@ -3,10 +3,10 @@
 Namespace Controllers
     Public Class CoworkerController
         Inherits Controller
+        Private db As CoEasy_DB = New CoEasy_DB
+        Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
 
-        ' GET: Coworker
-        Function Index() As ActionResult
-            Return View()
-        End Function
+        ' GET: /MeineEinkaeufe
+
     End Class
 End Namespace

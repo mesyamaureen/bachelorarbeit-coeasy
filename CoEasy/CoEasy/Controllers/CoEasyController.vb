@@ -7,12 +7,6 @@ Namespace Controllers
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
         Public Shared mEinkaufsliste As Einkaufsliste
 
-        '' GET: CoEasy
-        'Function Startseite() As ActionResult
-        '    Return View()
-        'End Function
-
-        'laden alle Einkäufe
         ' GET: /Startseite
         Function Einkaeufe() As ActionResult
             ' Deklaration
