@@ -408,6 +408,7 @@
     <Content Include="Views\Anmeldung\Einloggen.vbhtml" />
     <Content Include="Views\CoEasy\Einkaeufe.vbhtml" />
     <Content Include="Views\MeinProfil\Profil.vbhtml" />
+    <Content Include="Views\AlleTickets\AlleTickets.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -439,7 +440,6 @@
     <Folder Include="Views\AlleEinkauefe\" />
     <Folder Include="Views\AlleEinkaufspositionen\" />
     <Folder Include="Views\AlleMitarbeiter\" />
-    <Folder Include="Views\AlleTickets\" />
     <Folder Include="Views\AlleWLAN\" />
     <Folder Include="Views\CoEasyCoworker\" />
     <Folder Include="Views\Coworker\" />
