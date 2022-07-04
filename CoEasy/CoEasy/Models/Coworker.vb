@@ -9,6 +9,7 @@ Public Class Coworker
     Private mstrSteuernummer As String
     Private mstrFirmenname As String
     Private mEinkauf As Einkauf
+    Private mEinkaeufe As List(Of Einkauf)
 
     Sub New()
         mstrAdresse = String.Empty
@@ -46,6 +47,15 @@ Public Class Coworker
         End Get
         Set(value As String)
             mstrFirmenname = value
+        End Set
+    End Property
+
+    Public Property Einkaeufe As List(Of Einkauf)
+        Get
+            Return mEinkaeufe
+        End Get
+        Set(value As List(Of Einkauf))
+            mEinkaeufe = value
         End Set
     End Property
 

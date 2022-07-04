@@ -47,19 +47,20 @@ End Code
                         <table class="table table-striped table-bordered" id="Tabelle">
                             <tr class="header">
                                 <th>ID</th>
-                                <th>Anzahl</th>
-                                <th>Artikel</th>
+                                @*<th>Anzahl</th>
+                                <th>Artikel</th>*@
                                 <th>Status</th>
                                 <th>Einkaufsdatum</th>
                                 <th>Total</th>
                                 <th></th>
                             </tr>
 
+
                             @For Each eEink In Model.Einkauf 'hier Model.alle öffentlichen Properties
                                 @<tr>
                                     <td>@eEink.EinkaufID</td>
-                                    <td>@eEink.Einkaufsposition.Anzahl</td>
-                                    <td>@eEink.Einkaufsposition.Ticket</td>
+                                    @*<td>@eEink.Einkaufsposition.Anzahl</td>
+                                    <td>@eEink.Einkaufsposition.Ticket</td>*@
                                     <td>@eEink.Status</td>
                                     <td>@eEink.Erstelldatum</td>
                                     <td>@eEink.Totalpreis</td>

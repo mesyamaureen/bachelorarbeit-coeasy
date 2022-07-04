@@ -19,6 +19,13 @@ Public Class Ticket
         mdblPreis = pdblPreis
     End Sub
 
+    'Konstruktor Entity
+    Sub New(pticketEntity As TicketEntity)
+        mintTicketID = pticketEntity.TicketIdPk
+        mstrBezeichnung = pticketEntity.Bezeichnung
+        mdblPreis = pticketEntity.Preis
+    End Sub
+
     Public Property TicketID As Integer
         Get
             Return mintTicketID
@@ -46,6 +53,12 @@ Public Class Ticket
         End Set
     End Property
 
-    'Konstruktor Entity
     'gibEntity
+    Public Function gibAlsTicketEntity() As TicketEntity
+        Dim ticketEntity As TicketEntity = New TicketEntity
+        ticketEntity.TicketIdPk = mintTicketID
+        ticketEntity.Bezeichnung = mstrBezeichnung
+        ticketEntity.Preis = mdblPreis
+        Return ticketEntity
+    End Function
 End Class

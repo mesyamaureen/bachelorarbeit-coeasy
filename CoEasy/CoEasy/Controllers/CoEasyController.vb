@@ -3,7 +3,7 @@
 Namespace Controllers
     Public Class CoEasyController
         Inherits Controller
-        Private db As CoEasy_DBEntities = New CoEasy_DBEntities
+        Private db As CoEasy_DB = New CoEasy_DB
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
         Public Shared mEinkaufsliste As Einkaufsliste
 
@@ -20,7 +20,7 @@ Namespace Controllers
             Dim eEntity As EinkaufEntity
             Dim eListe As Einkaufsliste
 
-            ' Leere Liste initislisieren
+            ' Leere Liste initialisieren
             eListe = New Einkaufsliste()
 
             ' Alle Jobanzeigen aus der Datenbank holen

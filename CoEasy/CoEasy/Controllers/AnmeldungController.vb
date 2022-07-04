@@ -22,7 +22,7 @@ Namespace Controllers
         <ValidateAntiForgeryToken>
         Function Einloggen(pben As Benutzer) As ActionResult
             If ModelState.IsValid Then
-                Using db As CoEasy_DBEntities = New CoEasy_DBEntities
+                Using db As CoEasy_DB = New CoEasy_DB
                     'Dim infl As InfluencerEntity
                     Dim benCoworker As CoworkerEntity
                     Try

@@ -16,8 +16,9 @@ Partial Public Class EinkaufspositionEntity
     Public Property Totalpreis As Decimal
     Public Property TicketIdFk As Integer
     Public Property WlanIdFk As Integer
+    Public Property EinkaufIdFk As Integer
 
-    Public Overridable Property tblEinkauf As ICollection(Of EinkaufEntity) = New HashSet(Of EinkaufEntity)
+    Public Overridable Property tblEinkauf As EinkaufEntity
     Public Overridable Property tblTicket As TicketEntity
     Public Overridable Property tblWLAN As WLANEntity
 

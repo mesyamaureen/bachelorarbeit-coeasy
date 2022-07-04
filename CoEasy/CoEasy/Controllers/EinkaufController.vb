@@ -3,7 +3,7 @@
 Namespace Controllers
     Public Class EinkaufController
         Inherits Controller
-        Private db As CoEasy_DBEntities = New CoEasy_DBEntities
+        Private db As CoEasy_DB = New CoEasy_DB
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
         Public Shared mEinkaufsliste As Einkaufsliste
 

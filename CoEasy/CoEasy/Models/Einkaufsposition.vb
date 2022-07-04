@@ -11,6 +11,8 @@ Public Class Einkaufsposition
     Private mWlan As WLAN
     Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
     Private mstrTicket As String
+    Private mEinkaufID As Integer
+    Private mEinkaeufe As List(Of Einkauf)
 
     Sub New()
         mintEinkaufspositionID = Nothing
@@ -19,15 +21,28 @@ Public Class Einkaufsposition
         'mTicket = Nothing
         mstrTicket = String.Empty
         mWlan = Nothing
+        mEinkaufID = -1
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN)
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN, pEinkaufID As Integer)
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahl = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
         'mTicket = pTicket
         mstrTicket = pstrTicket
         mWlan = pWlan
+        mEinkaufID = pEinkaufID
+    End Sub
+
+    'Konstruktor Entity
+    Sub New(peinkposEntity As EinkaufspositionEntity)
+        mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
+        mintAnzahl = peinkposEntity.Anzahl
+        mdblTotalpreis = peinkposEntity.Totalpreis
+        'mTicket.TicketID = peinkposEntity.TicketIdFk
+        mstrTicket = peinkposEntity.tblTicket.Bezeichnung
+        mWlan.WlanID = peinkposEntity.WlanIdFk
+        mEinkaufID = peinkposEntity.EinkaufIdFk
     End Sub
 
     Public Property EinkaufspositionID As Integer
@@ -55,7 +70,7 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    Public Property Ticket As String
+    Public Property TicketBezeichnung As String
         Get
             Return mstrTicket
         End Get
@@ -64,14 +79,14 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    'Public Property Ticket As Ticket
-    '    Get
-    '        Return mTicket
-    '    End Get
-    '    Set(value As Ticket)
-    '        mTicket = value
-    '    End Set
-    'End Property
+    Public Property Ticket As Ticket
+        Get
+            Return mTicket
+        End Get
+        Set(value As Ticket)
+            mTicket = value
+        End Set
+    End Property
     Public Property Wlan As WLAN
         Get
             Return mWlan
@@ -89,15 +104,23 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    'Konstruktor Entity
-    Sub New(peinkposEntity As EinkaufspositionEntity)
-        mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
-        mintAnzahl = peinkposEntity.Anzahl
-        mdblTotalpreis = peinkposEntity.Totalpreis
-        'mTicket.TicketID = peinkposEntity.TicketIdFk
-        mstrTicket = peinkposEntity.tblTicket.Bezeichnung
-        mWlan.WlanID = peinkposEntity.WlanIdFk
-    End Sub
+    Public Property EinkaufID As Integer
+        Get
+            Return mEinkaufID
+        End Get
+        Set(value As Integer)
+            mEinkaufID = value
+        End Set
+    End Property
+
+    Public Property Einkaeufe As List(Of Einkauf)
+        Get
+            Return mEinkaeufe
+        End Get
+        Set(value As List(Of Einkauf))
+            mEinkaeufe = value
+        End Set
+    End Property
 
     'gibEntity
     Public Function gibAlsEinkPositionEntity() As EinkaufspositionEntity

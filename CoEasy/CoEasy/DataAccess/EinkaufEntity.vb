@@ -15,9 +15,8 @@ Partial Public Class EinkaufEntity
     Public Property Totalpreis As Decimal
     Public Property Status As String
     Public Property Erstelldatum As Date
-    Public Property EinkaufspositionIdFk As Integer
 
     Public Overridable Property tblCoworker As ICollection(Of CoworkerEntity) = New HashSet(Of CoworkerEntity)
-    Public Overridable Property tblEinkaufsposition As EinkaufspositionEntity
+    Public Overridable Property tblEinkaufsposition As ICollection(Of EinkaufspositionEntity) = New HashSet(Of EinkaufspositionEntity)
 
 End Class
