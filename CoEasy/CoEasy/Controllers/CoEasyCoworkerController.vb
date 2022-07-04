@@ -21,11 +21,14 @@ Namespace Controllers
 
             ' Alle Jobanzeigen aus der Datenbank holen
             For Each eEntity In db.tblEinkauf.ToList
+                'Überprüfen, ob der Entity zum angemeldeten Coworker gehört
+                'If eEntity.EinkCoworkerIdFk.ToString().Equals(System.Web.HttpContext.Current.Session("BenutzerID")) Then
                 ' Objekt der Entity-Klasse in Objekt der Model-Klasse umwandeln
                 eEinkauf = New Einkauf(eEntity)
 
                 ' Objekt der Model-Klasse zur Liste hinzufügen
                 eListe.Einkauf.Add(eEinkauf)
+                ' End If
             Next
 
             ' Gesamte list anzeigen
