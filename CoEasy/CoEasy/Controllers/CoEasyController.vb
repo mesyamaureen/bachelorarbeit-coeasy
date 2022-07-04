@@ -1,4 +1,5 @@
-﻿Imports System.Web.Mvc
+﻿Imports System.Data.Entity
+Imports System.Web.Mvc
 
 Namespace Controllers
     Public Class CoEasyController

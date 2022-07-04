@@ -8,8 +8,7 @@ Namespace Controllers
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
         Public Shared mEinkaufsliste As Einkaufsliste
 
-        'GET: /Einkaeufe/OeffnenEinkauf
-        <HttpGet>
+        'GET: /Einkaeufe/Oeffnen
         Function Oeffnen(ID As Integer) As ActionResult
             Dim eink As Einkauf
             Dim einkEntity As EinkaufEntity
@@ -28,7 +27,19 @@ Namespace Controllers
             Return View(vmEink) 'ViewModel mit Einkauf an die View zur Bearbeitung geben
         End Function
 
-        'POST: /Einkaeufe/
+        'POST: Einkauf/Stornieren
+        <HttpPost>
+        Function Stornieren(pEink As Einkauf) As ActionResult
+            Dim einkEntity As EinkaufEntity = pEink.gibAlsEinkaufEntity 'einkauf in einkaufentity umwandeln
+            db.tblEinkauf.Attach(einkEntity) 'speichern vorbereiten
+            db.Entry(einkEntity).State = EntityState.Deleted 'als gelöscht markieren
+            Try 'vorsichtig Änderungen speichern
+                db.SaveChanges()
+            Catch ex As Exception
+                ModelState.AddModelError(String.Empty, "Stornierung war nicht erfolgreich.")
+            End Try
+            Return RedirectToAction("Einkaeufe", "CoEasy") 'zurück zur Übersicht Einkäufe
+        End Function
 
     End Class
 End Namespace

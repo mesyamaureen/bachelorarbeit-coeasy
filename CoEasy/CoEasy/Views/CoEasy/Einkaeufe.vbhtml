@@ -66,6 +66,7 @@ End Code
                                     <td>@eEink.Totalpreis</td>
                                     <td>
                                         @Html.ActionLink("Öffnen", "Oeffnen", "Einkauf", New With {.ID = eEink.EinkaufID}, New With {.class = "btn btn-info", .role = "button"})
+                                        @Html.ActionLink("Stornieren", "Stornieren", "Einkauf", New With {.ID = eEink.EinkaufID}, New With {.class = "btn btn-info", .role = "button"})
                                     </td>
                                 </tr>
                             Next
