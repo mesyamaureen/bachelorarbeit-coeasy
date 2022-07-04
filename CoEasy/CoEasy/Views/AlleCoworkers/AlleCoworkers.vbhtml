@@ -1,4 +1,4 @@
-﻿@ModelType CoEasy.Einkaufsliste
+﻿@ModelType CoEasy.CoworkerListe
 
 @Code
     Layout = Nothing
@@ -25,7 +25,7 @@ End Code
                         <li>@Html.ActionLink("Startseite", "Einkaeufe", "CoEasy")</li>
                         <li>@Html.ActionLink("Tickets", "AlleTickets", "AlleTickets")</li>
                         <li>@Html.ActionLink("Coworkers", "AlleCoworkers", "AlleCoworkers")</li>
-                        <li>@Html.ActionLink("Mitarbeiter", "AlleMitarbeiter", "AlleMitarbeiter")</li>
+                        <li>@Html.ActionLink("Mitarbeiter", "Mitarbeiter", "AlleMitarbeiter")</li>
                         <li>@Html.ActionLink("Mein Profil", "Profil", "MeinProfil")</li>
                         <li>@Html.ActionLink("Ausloggen", "Ausloggen", "Anmeldung")</li>
                     </ul>
@@ -41,31 +41,26 @@ End Code
                 <!-- contentComponent -->
                 <div class="col">
                     <div>
-                        <h1>Verfügbare Plätze</h1>
+                        <h1>Alle Coworkers</h1>
                     </div>
                     <div>
                         <table class="table table-striped table-bordered" id="Tabelle">
                             <tr class="header">
                                 <th>ID</th>
-                                @*<th>Anzahl</th>
-                                <th>Artikel</th>*@
-                                <th>Status</th>
-                                <th>Einkaufsdatum</th>
-                                <th>Total</th>
+                                <th>Bezeichnung</th>
+                                <th>Preis</th>
                                 <th></th>
                             </tr>
 
 
-                            @For Each eEink In Model.Einkauf 'hier Model.alle öffentlichen Properties
+                            @For Each einzCoworker In Model.Coworker 'hier Model.alle öffentlichen Properties
                                 @<tr>
-                                    <td>@eEink.EinkaufID</td>
-                                    @*<td>@eEink.Einkaufsposition.Anzahl</td>
-                                    <td>@eEink.Einkaufsposition.Ticket</td>*@
-                                    <td>@eEink.Status</td>
-                                    <td>@eEink.Erstelldatum</td>
-                                    <td>@eEink.Totalpreis</td>
+                                    <td>@einzCoworker.BenutzerID</td>
+                                    <td>@einzCoworker.Benutzername</td>
+                                    <td>@einzCoworker.Vorname</td>
+                                    <td>@einzCoworker.Name</td>
                                     <td>
-                                        @Html.ActionLink("Öffnen", "Oeffnen", "Einkauf", New With {.ID = eEink.EinkaufID}, New With {.class = "btn btn-info", .role = "button"})
+                                        @Html.ActionLink("Öffnen", "Oeffnen", "Coworker", New With {.ID = einzCoworker.BenutzerID}, New With {.class = "btn btn-info", .role = "button"})
                                     </td>
                                 </tr>
                             Next

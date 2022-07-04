@@ -409,6 +409,7 @@
     <Content Include="Views\CoEasy\Einkaeufe.vbhtml" />
     <Content Include="Views\MeinProfil\Profil.vbhtml" />
     <Content Include="Views\AlleTickets\AlleTickets.vbhtml" />
+    <Content Include="Views\AlleCoworkers\AlleCoworkers.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -436,7 +437,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\AlleCoworkers\" />
     <Folder Include="Views\AlleEinkauefe\" />
     <Folder Include="Views\AlleEinkaufspositionen\" />
     <Folder Include="Views\AlleMitarbeiter\" />
