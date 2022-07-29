@@ -413,6 +413,7 @@
     <Content Include="Views\AlleMitarbeiter\AlleMitarbeiter.vbhtml" />
     <Content Include="Views\CoEasyCoworker\MeineEinkaeufe.vbhtml" />
     <Content Include="Views\Einkauf\Oeffnen.vbhtml" />
+    <Content Include="Views\Ticket\Bearbeiten.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -446,7 +447,6 @@
     <Folder Include="Views\Coworker\" />
     <Folder Include="Views\Einkaufsposition\" />
     <Folder Include="Views\Mitarbeiter\" />
-    <Folder Include="Views\Ticket\" />
     <Folder Include="Views\WLAN\" />
   </ItemGroup>
   <ItemGroup>
