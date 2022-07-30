@@ -9,35 +9,40 @@ Public Class Einkauf
     Private mstrStatus As String
     Private mdatErstelldatum As Date
     Private mlstEinkauf As List(Of Einkauf)
-    'Private mEinkaufsposition As Einkaufsposition
-    'Private mEinkaufspositionID As Integer
+    Private mTicket As Ticket
+    Private mEinkaufsposition As Einkaufsposition
+    Private mEinkaufspositionID As Integer
 
     Sub New()
         mintEinkaufID = Nothing
         mdblTotalpreis = Nothing
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
-        ''mEinkaufspositionID = Nothing
-        ''mEinkaufsposition.EinkaufspositionID = Nothing
+        mTicket = Nothing
+        'mEinkaufspositionID = Nothing
+        mEinkaufsposition.EinkaufspositionID = Nothing
     End Sub
 
-    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date) ' pEinkaufsposition As Einkaufsposition) 'pEinkaufspositionID As Integer)
+    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pTicket As Ticket, pEinkaufspositionID As Integer) 'pEinkaufsposition As Einkaufsposition) 'pEinkaufspositionID As Integer)
         mintEinkaufID = pintEinkaufID
         mdblTotalpreis = pdblTotalpreis
         mstrStatus = pstrStatus
         mdatErstelldatum = pdatErstelldatum
-        ''mEinkaufspositionID = pEinkaufspositionID
-        ''mEinkaufsposition.EinkaufspositionID = pEinkaufspositionID
+        mTicket = pTicket
+        'mEinkaufspositionID = pEinkaufspositionID
+        mEinkaufsposition.EinkaufspositionID = pEinkaufspositionID
     End Sub
 
     'Konstruktor: Entity
     Sub New(peinkEntity As EinkaufEntity)
         mintEinkaufID = peinkEntity.EinkaufIdPk
         'mEinkaufspositionID = peinkEntity.EinkaufspositionIdFk
-        'mEinkaufsposition = New Einkaufsposition(peinkEntity.EinkaufspositionIdFk, peinkEntity.tblEinkaufsposition.Anzahl, peinkEntity.tblEinkaufsposition.Totalpreis, peinkEntity.tblEinkaufsposition.tblTicket.Bezeichnung, Nothing) '.EinkaufspositionID = peinkEntity.EinkaufspositionIdFk
+        'mEinkaufsposition = New Einkaufsposition( '(peinkEntity.EinkaufspositionIdFk, peinkEntity.tblEinkaufsposition.Anzahl, peinkEntity.tblEinkaufsposition.Totalpreis, peinkEntity.tblEinkaufsposition.tblTicket.Bezeichnung, Nothing) '.EinkaufspositionID = peinkEntity.EinkaufspositionIdFk
         mdblTotalpreis = peinkEntity.Totalpreis
         mstrStatus = peinkEntity.Status
         mdatErstelldatum = peinkEntity.Erstelldatum
+
+        'berhenti disini
     End Sub
 
 
@@ -100,6 +105,8 @@ Public Class Einkauf
             mlstEinkauf = value
         End Set
     End Property
+
+
 
     'gibEntity
     Public Function gibAlsEinkaufEntity() As EinkaufEntity

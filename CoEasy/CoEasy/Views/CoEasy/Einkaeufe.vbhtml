@@ -35,7 +35,7 @@ End Code
             <div class="col-lg-8" style="display: flex; flex-direction:column; justify-content:flex-start; align-content:flex-end; align-items:flex-end; padding-left:0;">
                 <!-- topNavBar -->
                 <div class="col" style="display:flex;flex-direction:row-reverse; flex-wrap:wrap; background-color:#F8E6BC;">
-                    <button>Einkauf</button>
+                    <button>@Html.ActionLink("Einkauf", "Neu", "Einkauf")</button>
                     <button>WLAN hochladen</button>
                 </div>
                 <!-- contentComponent -->

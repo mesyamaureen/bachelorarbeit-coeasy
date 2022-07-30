@@ -35,7 +35,7 @@ Public Class Einkaufsposition
     End Sub
 
     'Konstruktor Entity
-    Sub New(peinkposEntity As EinkaufspositionEntity)
+    Sub New(einkaufspositionIdFk As Object, peinkposEntity As EinkaufspositionEntity)
         mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
         mintAnzahl = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis

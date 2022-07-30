@@ -32,7 +32,7 @@ End Code
             <div class="col-lg-8" style="display: flex; flex-direction:column; justify-content:flex-start; align-content:flex-end; align-items:flex-end; padding-left:0;">
                 <!-- topNavBar -->
                 <div class="col" style="display:flex;flex-direction:row-reverse; flex-wrap:wrap; background-color:#F8E6BC;">
-                    <button>WLAN generieren</button>
+                    <button>@Html.ActionLink("WLAN generieren", "Neu", "WLAN")</button>
                 </div>
                 <!-- contentComponent -->
                 <div class="col">
