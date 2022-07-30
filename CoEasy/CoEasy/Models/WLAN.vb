@@ -33,4 +33,11 @@ Public Class WLAN
             mstrWlanCode = value
         End Set
     End Property
+
+    Public Function gibAlsWlanEntity() As WLANEntity
+        Dim wlanE As WLANEntity = New WLANEntity
+        wlanE.WlanIdPk = WlanID
+        wlanE.WlanCode = WlanCode
+        Return wlanE
+    End Function
 End Class

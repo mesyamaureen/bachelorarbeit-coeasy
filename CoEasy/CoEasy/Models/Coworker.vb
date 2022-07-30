@@ -10,6 +10,7 @@ Public Class Coworker
     Private mstrFirmenname As String
     Private mEinkauf As Einkauf
     Private mEinkaeufe As List(Of Einkauf)
+    Private coworkerID As Integer
 
     Sub New()
         Benutzername = String.Empty
@@ -17,19 +18,20 @@ Public Class Coworker
         Vorname = String.Empty
         Name = String.Empty
         Email = String.Empty
-        BenutzerID = Nothing
+        coworkerID = -1
         mstrAdresse = String.Empty
         mstrSteuernummer = String.Empty
         mstrFirmenname = String.Empty
+
     End Sub
 
-    Sub New(pBenutzername As String, pPasswort As String, pVorname As String, pName As String, pEmail As String, pBenutzerID As Integer, pstrAdresse As String, pstrSteuernummer As String, pstrFirmenname As String)
+    Sub New(pBenutzername As String, pPasswort As String, pVorname As String, pName As String, pEmail As String, pCoworkerID As Integer, pstrAdresse As String, pstrSteuernummer As String, pstrFirmenname As String)
         Benutzername = pBenutzername
         Passwort = pPasswort
         Vorname = pVorname
         Name = pName
         Email = pEmail
-        BenutzerID = pBenutzerID
+        BenutzerID = pCoworkerID
         mstrAdresse = pstrAdresse
         mstrSteuernummer = pstrSteuernummer
         mstrFirmenname = pstrFirmenname
@@ -81,7 +83,7 @@ Public Class Coworker
     End Property
 
     Sub New(pCowEntity As CoworkerEntity)
-        BenutzerID = pCowEntity.CoworkerIdPk
+        coworkerID = pCowEntity.CoworkerIdPk
         Benutzername = pCowEntity.Benutzername
         Vorname = pCowEntity.Vorname
         Name = pCowEntity.Name
@@ -96,7 +98,7 @@ Public Class Coworker
         cowE = New CoworkerEntity
         cowE.Adresse = Adresse
         cowE.Benutzername = Benutzername
-        cowE.CoworkerIdPk = BenutzerID
+        cowE.CoworkerIdPk = coworkerID
         cowE.Email = Email
         cowE.Firmenname = Firmenname
         cowE.Name = Name

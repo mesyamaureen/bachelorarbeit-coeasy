@@ -5,7 +5,7 @@ Imports System.ComponentModel
 
 Public Class Einkaufsposition
     Private mintEinkaufspositionID As Integer
-    Private mintAnzahl As Integer
+    Private mintAnzahlWLAN As Integer
     Private mdblTotalpreis As Double
     Private mTicket As Ticket
     Private mWlan As WLAN
@@ -17,7 +17,7 @@ Public Class Einkaufsposition
 
     Sub New()
         mintEinkaufspositionID = Nothing
-        mintAnzahl = Nothing
+        mintAnzahlWLAN = Nothing
         mdblTotalpreis = Nothing
         'mTicket = Nothing
         'mstrTicket = String.Empty
@@ -28,7 +28,7 @@ Public Class Einkaufsposition
 
     Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pTicket As Ticket, pEinkauf As Einkauf) 'pstrTicket As String
         mintEinkaufspositionID = pintEinkaufspositionID
-        mintAnzahl = pintAnzahl
+        mintAnzahlWLAN = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
         mTicket = pTicket
         'mEinkaufID = pEinkaufID
@@ -38,7 +38,7 @@ Public Class Einkaufsposition
     'Konstruktor Entity
     Sub New(peinkposEntity As EinkaufspositionEntity) 'einkaufspositionIdFk As Object, 
         mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
-        mintAnzahl = peinkposEntity.Anzahl
+        mintAnzahlWLAN = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis
         'mTicket.TicketID = peinkposEntity.TicketIdFk
         mEinkauf = New Einkauf(peinkposEntity.EinkaufIdFk, Nothing, "", Nothing, Nothing)
@@ -53,12 +53,12 @@ Public Class Einkaufsposition
             mintEinkaufspositionID = value
         End Set
     End Property
-    Public Property Anzahl As Integer
+    Public Property AnzahlWLAN As Integer
         Get
-            Return mintAnzahl
+            Return mintAnzahlWLAN
         End Get
         Set(value As Integer)
-            mintAnzahl = value
+            mintAnzahlWLAN = value
         End Set
     End Property
     Public Property Totalpreis As Double
@@ -137,7 +137,7 @@ Public Class Einkaufsposition
         einkPosEntity = New EinkaufspositionEntity
 
         einkPosEntity.EinkaufspositionIdPk = mintEinkaufspositionID
-        einkPosEntity.Anzahl = mintAnzahl
+        einkPosEntity.Anzahl = mintAnzahlWLAN
         'einkPosEntity.TicketIdFk = mTicket.TicketID
         einkPosEntity.Totalpreis = mdblTotalpreis
         einkPosEntity.EinkaufIdFk = mEinkauf.EinkaufID

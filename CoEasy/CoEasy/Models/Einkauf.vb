@@ -14,12 +14,12 @@ Public Class Einkauf
     Private mEinkaufspositionID As Integer
 
     Sub New()
-        mintEinkaufID = Nothing
+        mintEinkaufID = -1
         mdblTotalpreis = Nothing
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
         mCoworker = Nothing
-        mEinkaufsposition.EinkaufspositionID = Nothing
+        'mEinkaufsposition.EinkaufspositionID = -1
     End Sub
 
     Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pCoworker As Coworker)
