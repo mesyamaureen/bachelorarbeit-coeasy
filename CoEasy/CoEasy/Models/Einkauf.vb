@@ -9,7 +9,7 @@ Public Class Einkauf
     Private mstrStatus As String
     Private mdatErstelldatum As Date
     Private mlstEinkauf As List(Of Einkauf)
-    Private mTicket As Ticket
+    Private mCoworker As Coworker
     Private mEinkaufsposition As Einkaufsposition
     Private mEinkaufspositionID As Integer
 
@@ -18,31 +18,25 @@ Public Class Einkauf
         mdblTotalpreis = Nothing
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
-        mTicket = Nothing
-        'mEinkaufspositionID = Nothing
+        mCoworker = Nothing
         mEinkaufsposition.EinkaufspositionID = Nothing
     End Sub
 
-    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pTicket As Ticket, pEinkaufspositionID As Integer) 'pEinkaufsposition As Einkaufsposition) 'pEinkaufspositionID As Integer)
+    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pCoworker As Coworker)
         mintEinkaufID = pintEinkaufID
         mdblTotalpreis = pdblTotalpreis
         mstrStatus = pstrStatus
         mdatErstelldatum = pdatErstelldatum
-        mTicket = pTicket
-        'mEinkaufspositionID = pEinkaufspositionID
-        mEinkaufsposition.EinkaufspositionID = pEinkaufspositionID
+        mCoworker = pCoworker
     End Sub
 
     'Konstruktor: Entity
     Sub New(peinkEntity As EinkaufEntity)
         mintEinkaufID = peinkEntity.EinkaufIdPk
-        'mEinkaufspositionID = peinkEntity.EinkaufspositionIdFk
-        'mEinkaufsposition = New Einkaufsposition( '(peinkEntity.EinkaufspositionIdFk, peinkEntity.tblEinkaufsposition.Anzahl, peinkEntity.tblEinkaufsposition.Totalpreis, peinkEntity.tblEinkaufsposition.tblTicket.Bezeichnung, Nothing) '.EinkaufspositionID = peinkEntity.EinkaufspositionIdFk
         mdblTotalpreis = peinkEntity.Totalpreis
         mstrStatus = peinkEntity.Status
         mdatErstelldatum = peinkEntity.Erstelldatum
-
-        'berhenti disini
+        mCoworker = New Coworker("", "", "", "", "", peinkEntity.CoworkerIdFk, "", "", "")
     End Sub
 
 
@@ -71,23 +65,6 @@ Public Class Einkauf
         End Set
     End Property
 
-    'Public Property Einkaufsposition As Einkaufsposition
-    '    Get
-    '        Return mEinkaufsposition
-    '    End Get
-    '    Set(value As Einkaufsposition)
-    '        mEinkaufsposition = value
-    '    End Set
-    'End Property
-    'Public Property EinkaufspositionID As Integer
-    '    Get
-    '        Return mEinkaufspositionID
-    '    End Get
-    '    Set(value As Integer)
-    '        mEinkaufspositionID = value
-    '    End Set
-    'End Property
-
     Public Property Erstelldatum As Date
         Get
             Return mdatErstelldatum
@@ -106,7 +83,14 @@ Public Class Einkauf
         End Set
     End Property
 
-
+    Public Property Coworker As Coworker
+        Get
+            Return mCoworker
+        End Get
+        Set(value As Coworker)
+            mCoworker = value
+        End Set
+    End Property
 
     'gibEntity
     Public Function gibAlsEinkaufEntity() As EinkaufEntity
@@ -114,11 +98,13 @@ Public Class Einkauf
         einkE = New EinkaufEntity
 
         einkE.EinkaufIdPk = mintEinkaufID
-        'einkE.EinkaufspositionIdFk = mEinkaufspositionID
-        'einkE.EinkaufspositionIdFk = mEinkaufsposition.EinkaufspositionID
         einkE.Erstelldatum = mdatErstelldatum
         einkE.Status = mstrStatus
         einkE.Totalpreis = mdblTotalpreis
+        einkE.CoworkerIdFk = mCoworker.BenutzerID
+        'If mCoworker IsNot Nothing Then
+        '    jobE.JaBrIdFk = mbrBranche.BrancheID
+        'End If
         Return einkE
     End Function
 

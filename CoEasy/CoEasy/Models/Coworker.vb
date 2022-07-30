@@ -12,12 +12,24 @@ Public Class Coworker
     Private mEinkaeufe As List(Of Einkauf)
 
     Sub New()
+        Benutzername = String.Empty
+        Passwort = String.Empty
+        Vorname = String.Empty
+        Name = String.Empty
+        Email = String.Empty
+        BenutzerID = Nothing
         mstrAdresse = String.Empty
         mstrSteuernummer = String.Empty
         mstrFirmenname = String.Empty
     End Sub
 
-    Sub New(pstrAdresse As String, pstrSteuernummer As String, pstrFirmenname As String)
+    Sub New(pBenutzername As String, pPasswort As String, pVorname As String, pName As String, pEmail As String, pBenutzerID As Integer, pstrAdresse As String, pstrSteuernummer As String, pstrFirmenname As String)
+        Benutzername = pBenutzername
+        Passwort = pPasswort
+        Vorname = pVorname
+        Name = pName
+        Email = pEmail
+        BenutzerID = pBenutzerID
         mstrAdresse = pstrAdresse
         mstrSteuernummer = pstrSteuernummer
         mstrFirmenname = pstrFirmenname
@@ -91,7 +103,6 @@ Public Class Coworker
         cowE.Passwort = Passwort
         cowE.Steuernummer = Steuernummer
         cowE.Vorname = Vorname
-        cowE.EinkaufIdFk = Einkauf.EinkaufID
         Return cowE
     End Function
 
