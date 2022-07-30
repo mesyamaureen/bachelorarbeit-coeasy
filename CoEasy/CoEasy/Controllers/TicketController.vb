@@ -63,5 +63,42 @@ Namespace Controllers
 
             Return RedirectToAction("Bearbeiten") 'Zurück zur Übersicht über alle Jobanzeigen
         End Function
+
+        'GET: /Ticket/Loeschen
+        Function Loeschen(ID As Integer) As ActionResult
+            Dim tick As Ticket
+            Dim tickEntity As TicketEntity
+            tickEntity = db.tblTicket.Find(ID) 'Jobanzeige in Datenbank finden
+
+            If tickEntity Is Nothing Then
+                Return New HttpNotFoundResult("Ticket mit der ID " & ID & " wurde nicht gefunden.")
+            End If
+
+            db.Entry(tickEntity).State = EntityState.Detached
+
+            tick = New Ticket(tickEntity)
+            Return View(tick) 'An die View geben, damit dort das Löschen bestätigt werden soll
+        End Function
+
+        'POST: /Ticket/Loeschen
+        <HttpPost>
+        Function Loeschen(pTicket As Ticket) As ActionResult
+            Dim tickEntity As TicketEntity
+
+            ' Jobanzeige in JobanzeigeEntity umwandeln
+            tickEntity = pTicket.gibAlsTicketEntity
+            'Speichern vorbereiten
+            db.tblTicket.Attach(tickEntity)
+            db.Entry(tickEntity).State = EntityState.Deleted 'als Gelöscht markieren
+            'Vorsichtig Änderungen speichern
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                ModelState.AddModelError(String.Empty, "Löschen war nicht erfolgreich.")
+            End Try
+
+            Return RedirectToAction("AlleTickets", "AlleTickets") 'Zurück zur Übersicht über alle Jobanzeigen
+        End Function
+
     End Class
 End Namespace
