@@ -12,22 +12,24 @@ Public Class Einkauf
     Private mCoworker As Coworker
     Private mEinkaufsposition As Einkaufsposition
     Private mEinkaufspositionID As Integer
+    Private mintCowID As Integer
 
     Sub New()
         mintEinkaufID = -1
-        mdblTotalpreis = Nothing
+        mdblTotalpreis = -1
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
-        mCoworker = Nothing
-        'mEinkaufsposition.EinkaufspositionID = -1
+        mintCowID = -1
+        'mCoworker = New Coworker()
     End Sub
 
-    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pCoworker As Coworker)
+    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pintCowId As Integer) ', pCoworker As Coworker)
         mintEinkaufID = pintEinkaufID
         mdblTotalpreis = pdblTotalpreis
         mstrStatus = pstrStatus
         mdatErstelldatum = pdatErstelldatum
-        mCoworker = pCoworker
+        mintCowID = pintCowId
+        'mCoworker = pCoworker
     End Sub
 
     'Konstruktor: Entity
@@ -36,7 +38,8 @@ Public Class Einkauf
         mdblTotalpreis = peinkEntity.Totalpreis
         mstrStatus = peinkEntity.Status
         mdatErstelldatum = peinkEntity.Erstelldatum
-        mCoworker = New Coworker("", "", "", "", "", peinkEntity.CoworkerIdFk, "", "", "")
+        mintCowID = peinkEntity.CoworkerIdFk
+        'mCoworker = New Coworker("", "", "", "", "", peinkEntity.CoworkerIdFk, "", "", "")
     End Sub
 
 
@@ -83,12 +86,21 @@ Public Class Einkauf
         End Set
     End Property
 
-    Public Property Coworker As Coworker
+    'Public Property Coworker As Coworker
+    '    Get
+    '        Return mCoworker
+    '    End Get
+    '    Set(value As Coworker)
+    '        mCoworker = value
+    '    End Set
+    'End Property
+
+    Public Property CoworkerID As Integer
         Get
-            Return mCoworker
+            Return mintCowID
         End Get
-        Set(value As Coworker)
-            mCoworker = value
+        Set(value As Integer)
+            mintCowID = value
         End Set
     End Property
 
@@ -101,7 +113,8 @@ Public Class Einkauf
         einkE.Erstelldatum = mdatErstelldatum
         einkE.Status = mstrStatus
         einkE.Totalpreis = mdblTotalpreis
-        einkE.CoworkerIdFk = mCoworker.BenutzerID
+        einkE.CoworkerIdFk = mintCowID
+        'einkE.CoworkerIdFk = mCoworker.BenutzerID
         'If mCoworker IsNot Nothing Then
         '    jobE.JaBrIdFk = mbrBranche.BrancheID
         'End If

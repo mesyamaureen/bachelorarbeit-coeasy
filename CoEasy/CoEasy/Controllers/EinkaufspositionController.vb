@@ -10,20 +10,16 @@ Namespace Controllers
         ' GET: NeuWLAN
         Function NeuWLAN() As ActionResult
             Dim einkPos As Einkaufsposition
-            Dim einkposEntity As EinkaufspositionEntity
+            Dim einkposEntity As EinkaufspositionEntity = New EinkaufspositionEntity()
             Dim einkEntity As EinkaufEntity
             Dim eink As Einkauf = New Einkauf()
-            Dim wlan As WLAN
             Dim wlanEntity As WLANEntity = New WLANEntity()
-            Dim ticket As Ticket
             Dim wlanCode As String = ""
+            Dim wlanId As Integer = Nothing
 
             Dim vmEinkPos As EinkaufspositionViewModel
 
-            ''prüfen Attribute AnzahlWLAN Attribut in Einkaufsposition
-            'wer ist der angemeldete Benutzer?
             Dim angemeldeterCoworker = Web.HttpContext.Current.Session("BenutzerID")
-            'welcher Einkauf dari coworker mana? 
             'Datenbank Zugriff über EF
             'Dim queryEinkaufID = (From e In db.tblEinkauf
             'Where e.CoworkerIdFk = angemeldeterCoworker
@@ -34,7 +30,7 @@ Namespace Controllers
                     eink = New Einkauf(einkEntity)
                     lstEinkauf.Add(eink)
                 End If
-            Next 'ergebnis = list Einkauf
+            Next
             Dim einkId As Integer = lstEinkauf.ElementAt(0).EinkaufID
 
             'Anzahl in Einkaufsposition?
@@ -45,26 +41,28 @@ Namespace Controllers
                     einkPos = New Einkaufsposition(einkposEntity)
                     lstEinkaufsposition.Add(einkPos)
                 End If
-            Next 'ergebnis = listeinkaufsposition
-            Dim anzahlWLAN As Integer = lstEinkaufsposition.ElementAt(0).AnzahlWLAN 'zugriff to Attribute AnzahlWLAN
+            Next
+            'Dim anzahlWLAN As Integer = lstEinkaufsposition.ElementAt(0).AnzahlWLAN 'zugriff to Attribute AnzahlWLAN
             ''wenn > 0, nimm ein Datensatz WLAN von DB
-            If anzahlWLAN > 0 Then
+            If lstEinkaufsposition.ElementAt(0).AnzahlWLAN > 0 Then
                 wlanEntity = db.tblWLAN.ToList.ElementAt(0)
             End If
 
             If wlanEntity IsNot Nothing Then
                 wlanCode = wlanEntity.WlanCode
+                wlanId = wlanEntity.WlanIdPk
             End If
-            ''speichern als ein Variabel für View
-            ''löschen Datensatz in DB
-            ''gib das Variabel an View weiter
 
             ''wenn = 0, Meldungbox
 
 
             vmEinkPos = New EinkaufspositionViewModel()
             vmEinkPos.WlanCode = wlanCode
+            vmEinkPos.WlanID = wlanId
+            vmEinkPos.Einkaufsposition = lstEinkaufsposition.ElementAt(0)
+            vmEinkPos.Einkaufsposition.AnzahlWLAN = lstEinkaufsposition.ElementAt(0).AnzahlWLAN - 1
             db.Entry(wlanEntity).State = EntityState.Detached
+            db.Entry(einkposEntity).State = EntityState.Detached
             'vmEinkPos.Wlan.WlanCode = wlanCode
             'vmEinkPos.EinkaufID = queryEinkaufID.FirstOrDefault.EinkaufID
 
@@ -75,10 +73,12 @@ Namespace Controllers
         End Function
 
         <HttpPost>
-        Function NeuWLAN(pWlan As WLAN) As ActionResult
+        Function NeuWLAN(pWlan As WLAN, pvmEinkpos As EinkaufspositionViewModel) As ActionResult
             Dim wlanEntity As WLANEntity
+            Dim pEinkpos As Einkaufsposition
+            Dim einkposEntity As EinkaufspositionEntity
 
-            ' Jobanzeige in JobanzeigeEntity umwandeln
+            ' Wlan in WlanEntity umwandeln
             wlanEntity = pWlan.gibAlsWlanEntity()
             'Speichern vorbereiten
             db.tblWLAN.Attach(wlanEntity)
@@ -88,6 +88,24 @@ Namespace Controllers
                 db.SaveChanges()
             Catch ex As Exception
                 ModelState.AddModelError(String.Empty, "Löschen war nicht erfolgreich.")
+            End Try
+
+            'Einkaufspos in EinkaufsposEntity umwandeln
+            'Dim intAnzahlWlan As Integer
+            pEinkpos = pvmEinkpos.Einkaufsposition
+            einkposEntity = pEinkpos.gibAlsEinkPositionEntity()
+            'intAnzahlWlan = (einkposEntity.Anzahl) - 1
+            'einkposEntity.Anzahl = intAnzahlWlan
+
+            'speichern vorbereiten
+            db.tblEinkaufsposition.Attach(einkposEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
+            db.Entry(einkposEntity).State = EntityState.Modified 'als geändert markieren
+            'vorsichtig Änderungen speichern
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                'Im Fehlerfall wird der Fehler im ViewModel vermerkt
+                ModelState.AddModelError(String.Empty, "Bearbeiten war nicht erfolgreich.")
             End Try
 
             Return RedirectToAction("MeineEinkaeufe", "CoEasyCoworker")
