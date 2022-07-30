@@ -7,6 +7,8 @@ Namespace Controllers
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
 
         ' GET: /MeineEinkaeufe
-
+        Function Oeffnen() As ActionResult
+            Return View()
+        End Function
     End Class
 End Namespace

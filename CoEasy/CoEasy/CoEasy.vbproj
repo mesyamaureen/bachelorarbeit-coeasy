@@ -416,6 +416,7 @@
     <Content Include="Views\Ticket\Bearbeiten.vbhtml" />
     <Content Include="Views\Einkauf\Neu.vbhtml" />
     <Content Include="Views\Einkaufsposition\NeuWLAN.vbhtml" />
+    <Content Include="Views\Coworker\Oeffnen.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -446,7 +447,6 @@
     <Folder Include="Views\AlleEinkauefe\" />
     <Folder Include="Views\AlleEinkaufspositionen\" />
     <Folder Include="Views\AlleWLAN\" />
-    <Folder Include="Views\Coworker\" />
     <Folder Include="Views\Mitarbeiter\" />
     <Folder Include="Views\WLAN\" />
   </ItemGroup>
