@@ -11,7 +11,7 @@ Public Class Einkaufsposition
     Private mWlan As WLAN
     Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
     Private mstrTicket As String
-    Private mEinkaufID As Integer
+    'Private mEinkaufID As Integer
     Private mEinkauf As Einkauf
     Private mEinkaeufe As List(Of Einkauf)
 
@@ -20,18 +20,17 @@ Public Class Einkaufsposition
         mintAnzahl = Nothing
         mdblTotalpreis = Nothing
         'mTicket = Nothing
-        mstrTicket = String.Empty
+        'mstrTicket = String.Empty
+        mTicket = Nothing
         mEinkauf = Nothing
         'mEinkaufID = -1
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN, pEinkauf As Einkauf)
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pTicket As Ticket, pEinkauf As Einkauf) 'pstrTicket As String
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahl = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
-        'mTicket = pTicket
-        mstrTicket = pstrTicket
-        mWlan = pWlan
+        mTicket = pTicket
         'mEinkaufID = pEinkaufID
         mEinkauf = pEinkauf
     End Sub
@@ -42,9 +41,8 @@ Public Class Einkaufsposition
         mintAnzahl = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis
         'mTicket.TicketID = peinkposEntity.TicketIdFk
-        mstrTicket = peinkposEntity.tblTicket.Bezeichnung
-        mEinkaufID = peinkposEntity.EinkaufIdFk
-
+        mEinkauf = New Einkauf(peinkposEntity.EinkaufIdFk, Nothing, "", Nothing, Nothing)
+        mTicket = New Ticket(peinkposEntity.TicketIdFk, "", Nothing)
     End Sub
 
     Public Property EinkaufspositionID As Integer
@@ -72,14 +70,14 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    Public Property TicketBezeichnung As String
-        Get
-            Return mstrTicket
-        End Get
-        Set(value As String)
-            mstrTicket = value
-        End Set
-    End Property
+    'Public Property TicketBezeichnung As String
+    '    Get
+    '        Return mstrTicket
+    '    End Get
+    '    Set(value As String)
+    '        mstrTicket = value
+    '    End Set
+    'End Property
 
     Public Property Ticket As Ticket
         Get
@@ -140,9 +138,10 @@ Public Class Einkaufsposition
 
         einkPosEntity.EinkaufspositionIdPk = mintEinkaufspositionID
         einkPosEntity.Anzahl = mintAnzahl
-        einkPosEntity.TicketIdFk = mTicket.TicketID
+        'einkPosEntity.TicketIdFk = mTicket.TicketID
         einkPosEntity.Totalpreis = mdblTotalpreis
         einkPosEntity.EinkaufIdFk = mEinkauf.EinkaufID
+        einkPosEntity.TicketIdFk = mTicket.TicketID
         Return einkPosEntity
     End Function
 End Class
