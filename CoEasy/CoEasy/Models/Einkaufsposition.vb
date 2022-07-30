@@ -12,6 +12,7 @@ Public Class Einkaufsposition
     Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
     Private mstrTicket As String
     Private mEinkaufID As Integer
+    Private mEinkauf As Einkauf
     Private mEinkaeufe As List(Of Einkauf)
 
     Sub New()
@@ -20,29 +21,30 @@ Public Class Einkaufsposition
         mdblTotalpreis = Nothing
         'mTicket = Nothing
         mstrTicket = String.Empty
-        mWlan = Nothing
-        mEinkaufID = -1
+        mEinkauf = Nothing
+        'mEinkaufID = -1
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN, pEinkaufID As Integer)
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pstrTicket As String, pWlan As WLAN, pEinkauf As Einkauf)
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahl = pintAnzahl
         mdblTotalpreis = pdblTotalpreis
         'mTicket = pTicket
         mstrTicket = pstrTicket
         mWlan = pWlan
-        mEinkaufID = pEinkaufID
+        'mEinkaufID = pEinkaufID
+        mEinkauf = pEinkauf
     End Sub
 
     'Konstruktor Entity
-    Sub New(einkaufspositionIdFk As Object, peinkposEntity As EinkaufspositionEntity)
+    Sub New(peinkposEntity As EinkaufspositionEntity) 'einkaufspositionIdFk As Object, 
         mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
         mintAnzahl = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis
         'mTicket.TicketID = peinkposEntity.TicketIdFk
         mstrTicket = peinkposEntity.tblTicket.Bezeichnung
-        mWlan.WlanID = peinkposEntity.WlanIdFk
         mEinkaufID = peinkposEntity.EinkaufIdFk
+
     End Sub
 
     Public Property EinkaufspositionID As Integer
@@ -104,14 +106,14 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    Public Property EinkaufID As Integer
-        Get
-            Return mEinkaufID
-        End Get
-        Set(value As Integer)
-            mEinkaufID = value
-        End Set
-    End Property
+    'Public Property EinkaufID As Integer
+    '    Get
+    '        Return mEinkaufID
+    '    End Get
+    '    Set(value As Integer)
+    '        mEinkaufID = value
+    '    End Set
+    'End Property
 
     Public Property Einkaeufe As List(Of Einkauf)
         Get
@@ -119,6 +121,15 @@ Public Class Einkaufsposition
         End Get
         Set(value As List(Of Einkauf))
             mEinkaeufe = value
+        End Set
+    End Property
+
+    Public Property Einkauf As Einkauf
+        Get
+            Return mEinkauf
+        End Get
+        Set(value As Einkauf)
+            mEinkauf = value
         End Set
     End Property
 
@@ -131,7 +142,7 @@ Public Class Einkaufsposition
         einkPosEntity.Anzahl = mintAnzahl
         einkPosEntity.TicketIdFk = mTicket.TicketID
         einkPosEntity.Totalpreis = mdblTotalpreis
-        einkPosEntity.WlanIdFk = mWlan.WlanID
+        einkPosEntity.EinkaufIdFk = mEinkauf.EinkaufID
         Return einkPosEntity
     End Function
 End Class
