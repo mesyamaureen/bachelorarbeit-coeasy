@@ -4,9 +4,6 @@ Imports CoEasy.Benutzer
 Namespace Controllers
     Public Class AnmeldungController
         Inherits Controller
-        'Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
-
-        'Private db As CoEasy_DBEntities = New CoEasy_DBEntities '= New collabEntities
 
         ' GET: Anmeldung
         Function Index() As ActionResult
@@ -22,7 +19,7 @@ Namespace Controllers
         <ValidateAntiForgeryToken>
         Function Einloggen(pben As Benutzer) As ActionResult
             If ModelState.IsValid Then
-                Using db As CoEasy_DB = New CoEasy_DB
+                Using db As CoEasy_Database = New CoEasy_Database
                     'Dim infl As InfluencerEntity
                     Dim benCoworker As CoworkerEntity
                     Try

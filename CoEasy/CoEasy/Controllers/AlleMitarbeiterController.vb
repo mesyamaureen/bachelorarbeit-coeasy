@@ -3,7 +3,7 @@
 Namespace Controllers
     Public Class AlleMitarbeiterController
         Inherits Controller
-        Private db As CoEasy_DB = New CoEasy_DB
+        Private db As CoEasy_Database = New CoEasy_Database
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
 
         ' GET: AlleMitarbeiter
