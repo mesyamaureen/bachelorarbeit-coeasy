@@ -126,7 +126,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoEasy_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Coworker">
+        <EntityType Name="CoworkerEntity">
           <Key>
             <PropertyRef Name="CoworkerIdPk" />
           </Key>
@@ -141,7 +141,7 @@
           <Property Name="Firmenname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblEinkauf" Relationship="Self.FK_tblEinkauf_tblCoworker" FromRole="tblCoworker" ToRole="tblEinkauf" />
         </EntityType>
-        <EntityType Name="Einkauf">
+        <EntityType Name="EinkaufEntity">
           <Key>
             <PropertyRef Name="EinkaufIdPk" />
           </Key>
@@ -153,7 +153,7 @@
           <NavigationProperty Name="tblCoworker" Relationship="Self.FK_tblEinkauf_tblCoworker" FromRole="tblEinkauf" ToRole="tblCoworker" />
           <NavigationProperty Name="tblEinkaufsposition" Relationship="Self.FK_tblEinkaufsposition_tblEinkauf" FromRole="tblEinkauf" ToRole="tblEinkaufsposition" />
         </EntityType>
-        <EntityType Name="Einkaufsposition">
+        <EntityType Name="EinkaufspositionEntity">
           <Key>
             <PropertyRef Name="EinkaufspositionIdPk" />
           </Key>
@@ -165,7 +165,7 @@
           <NavigationProperty Name="tblEinkauf" Relationship="Self.FK_tblEinkaufsposition_tblEinkauf" FromRole="tblEinkaufsposition" ToRole="tblEinkauf" />
           <NavigationProperty Name="tblTicket" Relationship="Self.FK_tblEinkaufsposition_tblTicket" FromRole="tblEinkaufsposition" ToRole="tblTicket" />
         </EntityType>
-        <EntityType Name="Mitarbeiter">
+        <EntityType Name="MitarbeiterEntity">
           <Key>
             <PropertyRef Name="MitarbeiterIdPk" />
           </Key>
@@ -176,7 +176,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Ticket">
+        <EntityType Name="TicketEntity">
           <Key>
             <PropertyRef Name="TicketIdPk" />
           </Key>
@@ -185,7 +185,7 @@
           <Property Name="Preis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="tblEinkaufsposition" Relationship="Self.FK_tblEinkaufsposition_tblTicket" FromRole="tblTicket" ToRole="tblEinkaufsposition" />
         </EntityType>
-        <EntityType Name="WLAN">
+        <EntityType Name="WLANEntity">
           <Key>
             <PropertyRef Name="WlanIdPk" />
           </Key>
@@ -193,8 +193,8 @@
           <Property Name="WlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK_tblEinkauf_tblCoworker">
-          <End Role="tblCoworker" Type="CoEasy_DBModel.Coworker" Multiplicity="1" />
-          <End Role="tblEinkauf" Type="CoEasy_DBModel.Einkauf" Multiplicity="*" />
+          <End Role="tblCoworker" Type="CoEasy_DBModel.CoworkerEntity" Multiplicity="1" />
+          <End Role="tblEinkauf" Type="CoEasy_DBModel.EinkaufEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblCoworker">
               <PropertyRef Name="CoworkerIdPk" />
@@ -205,8 +205,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblEinkaufsposition_tblEinkauf">
-          <End Role="tblEinkauf" Type="CoEasy_DBModel.Einkauf" Multiplicity="1" />
-          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.Einkaufsposition" Multiplicity="*" />
+          <End Role="tblEinkauf" Type="CoEasy_DBModel.EinkaufEntity" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.EinkaufspositionEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblEinkauf">
               <PropertyRef Name="EinkaufIdPk" />
@@ -217,8 +217,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblEinkaufsposition_tblTicket">
-          <End Role="tblTicket" Type="CoEasy_DBModel.Ticket" Multiplicity="1" />
-          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.Einkaufsposition" Multiplicity="*" />
+          <End Role="tblTicket" Type="CoEasy_DBModel.TicketEntity" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.EinkaufspositionEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblTicket">
               <PropertyRef Name="TicketIdPk" />
@@ -229,12 +229,12 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CoEasy_Database" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tblCoworker" EntityType="CoEasy_DBModel.Coworker" />
-          <EntitySet Name="tblEinkauf" EntityType="CoEasy_DBModel.Einkauf" />
-          <EntitySet Name="tblEinkaufsposition" EntityType="CoEasy_DBModel.Einkaufsposition" />
-          <EntitySet Name="tblMitarbeiter" EntityType="CoEasy_DBModel.Mitarbeiter" />
-          <EntitySet Name="tblTicket" EntityType="CoEasy_DBModel.Ticket" />
-          <EntitySet Name="tblWLAN" EntityType="CoEasy_DBModel.WLAN" />
+          <EntitySet Name="tblCoworker" EntityType="CoEasy_DBModel.CoworkerEntity" />
+          <EntitySet Name="tblEinkauf" EntityType="CoEasy_DBModel.EinkaufEntity" />
+          <EntitySet Name="tblEinkaufsposition" EntityType="CoEasy_DBModel.EinkaufspositionEntity" />
+          <EntitySet Name="tblMitarbeiter" EntityType="CoEasy_DBModel.MitarbeiterEntity" />
+          <EntitySet Name="tblTicket" EntityType="CoEasy_DBModel.TicketEntity" />
+          <EntitySet Name="tblWLAN" EntityType="CoEasy_DBModel.WLANEntity" />
           <AssociationSet Name="FK_tblEinkauf_tblCoworker" Association="Self.FK_tblEinkauf_tblCoworker">
             <End Role="tblCoworker" EntitySet="tblCoworker" />
             <End Role="tblEinkauf" EntitySet="tblEinkauf" />
@@ -255,7 +255,7 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CoEasy_DBModelStoreContainer" CdmEntityContainer="CoEasy_Database">
           <EntitySetMapping Name="tblCoworker">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.Coworker">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.CoworkerEntity">
               <MappingFragment StoreEntitySet="tblCoworker">
                 <ScalarProperty Name="CoworkerIdPk" ColumnName="CoworkerIdPk" />
                 <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
@@ -270,7 +270,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEinkauf">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.Einkauf">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.EinkaufEntity">
               <MappingFragment StoreEntitySet="tblEinkauf">
                 <ScalarProperty Name="EinkaufIdPk" ColumnName="EinkaufIdPk" />
                 <ScalarProperty Name="Totalpreis" ColumnName="Totalpreis" />
@@ -281,7 +281,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEinkaufsposition">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.Einkaufsposition">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.EinkaufspositionEntity">
               <MappingFragment StoreEntitySet="tblEinkaufsposition">
                 <ScalarProperty Name="EinkaufspositionIdPk" ColumnName="EinkaufspositionIdPk" />
                 <ScalarProperty Name="Anzahl" ColumnName="Anzahl" />
@@ -292,7 +292,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMitarbeiter">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.Mitarbeiter">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.MitarbeiterEntity">
               <MappingFragment StoreEntitySet="tblMitarbeiter">
                 <ScalarProperty Name="MitarbeiterIdPk" ColumnName="MitarbeiterIdPk" />
                 <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
@@ -304,7 +304,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTicket">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.Ticket">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.TicketEntity">
               <MappingFragment StoreEntitySet="tblTicket">
                 <ScalarProperty Name="TicketIdPk" ColumnName="TicketIdPk" />
                 <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
@@ -313,7 +313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblWLAN">
-            <EntityTypeMapping TypeName="CoEasy_DBModel.WLAN">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.WLANEntity">
               <MappingFragment StoreEntitySet="tblWLAN">
                 <ScalarProperty Name="WlanIdPk" ColumnName="WlanIdPk" />
                 <ScalarProperty Name="WlanCode" ColumnName="WlanCode" />

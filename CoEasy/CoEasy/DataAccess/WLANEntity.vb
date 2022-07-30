@@ -10,14 +10,8 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Einkaufsposition
-    Public Property EinkaufspositionIdPk As Integer
-    Public Property Anzahl As Integer
-    Public Property Totalpreis As Decimal
-    Public Property TicketIdFk As Integer
-    Public Property EinkaufIdFk As Integer
-
-    Public Overridable Property tblEinkauf As Einkauf
-    Public Overridable Property tblTicket As Ticket
+Partial Public Class WLANEntity
+    Public Property WlanIdPk As Integer
+    Public Property WlanCode As String
 
 End Class

@@ -10,12 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Mitarbeiter
-    Public Property MitarbeiterIdPk As Integer
-    Public Property Benutzername As String
-    Public Property Passwort As String
-    Public Property Vorname As String
-    Public Property Name As String
-    Public Property Email As String
+Partial Public Class TicketEntity
+    Public Property TicketIdPk As Integer
+    Public Property Bezeichnung As String
+    Public Property Preis As Decimal
+
+    Public Overridable Property tblEinkaufsposition As ICollection(Of EinkaufspositionEntity) = New HashSet(Of EinkaufspositionEntity)
 
 End Class

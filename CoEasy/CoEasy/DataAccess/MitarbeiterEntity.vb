@@ -10,14 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Einkauf
-    Public Property EinkaufIdPk As Integer
-    Public Property Totalpreis As Decimal
-    Public Property Status As String
-    Public Property Erstelldatum As Date
-    Public Property CoworkerIdFk As Integer
-
-    Public Overridable Property tblCoworker As Coworker
-    Public Overridable Property tblEinkaufsposition As ICollection(Of Einkaufsposition) = New HashSet(Of Einkaufsposition)
+Partial Public Class MitarbeiterEntity
+    Public Property MitarbeiterIdPk As Integer
+    Public Property Benutzername As String
+    Public Property Passwort As String
+    Public Property Vorname As String
+    Public Property Name As String
+    Public Property Email As String
 
 End Class

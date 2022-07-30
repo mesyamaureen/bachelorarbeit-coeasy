@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fcb692e5342a4a2ab0fc568e9c857990" Name="Diagram1">
-        <EntityTypeShape EntityType="CoEasy_DBModel.Coworker" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoEasy_DBModel.Einkauf" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoEasy_DBModel.Einkaufsposition" Width="1.5" PointX="4.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoEasy_DBModel.Mitarbeiter" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoEasy_DBModel.Ticket" Width="1.5" PointX="6.625" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CoEasy_DBModel.WLAN" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.CoworkerEntity" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.EinkaufEntity" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.EinkaufspositionEntity" Width="1.5" PointX="4.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.MitarbeiterEntity" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.TicketEntity" Width="1.5" PointX="6.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoEasy_DBModel.WLANEntity" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="CoEasy_DBModel.FK_tblEinkauf_tblCoworker" ManuallyRouted="false" />
         <AssociationConnector Association="CoEasy_DBModel.FK_tblEinkaufsposition_tblEinkauf" ManuallyRouted="false" />
         <AssociationConnector Association="CoEasy_DBModel.FK_tblEinkaufsposition_tblTicket" ManuallyRouted="false" />

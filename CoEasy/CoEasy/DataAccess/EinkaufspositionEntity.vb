@@ -10,11 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class Ticket
-    Public Property TicketIdPk As Integer
-    Public Property Bezeichnung As String
-    Public Property Preis As Decimal
+Partial Public Class EinkaufspositionEntity
+    Public Property EinkaufspositionIdPk As Integer
+    Public Property Anzahl As Integer
+    Public Property Totalpreis As Decimal
+    Public Property TicketIdFk As Integer
+    Public Property EinkaufIdFk As Integer
 
-    Public Overridable Property tblEinkaufsposition As ICollection(Of Einkaufsposition) = New HashSet(Of Einkaufsposition)
+    Public Overridable Property tblEinkauf As EinkaufEntity
+    Public Overridable Property tblTicket As TicketEntity
 
 End Class

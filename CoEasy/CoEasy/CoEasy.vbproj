@@ -188,22 +188,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Coworker.vb">
+    <Compile Include="DataAccess\CoworkerEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Einkauf.vb">
+    <Compile Include="DataAccess\EinkaufEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Einkaufsposition.vb">
+    <Compile Include="DataAccess\EinkaufspositionEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Mitarbeiter.vb">
+    <Compile Include="DataAccess\MitarbeiterEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Ticket.vb">
+    <Compile Include="DataAccess\TicketEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\WLAN.vb">
+    <Compile Include="DataAccess\WLANEntity.vb">
       <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">

@@ -10,8 +10,17 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class WLAN
-    Public Property WlanIdPk As Integer
-    Public Property WlanCode As String
+Partial Public Class CoworkerEntity
+    Public Property CoworkerIdPk As Integer
+    Public Property Benutzername As String
+    Public Property Passwort As String
+    Public Property Vorname As String
+    Public Property Name As String
+    Public Property Email As String
+    Public Property Adresse As String
+    Public Property Steuernummer As String
+    Public Property Firmenname As String
+
+    Public Overridable Property tblEinkauf As ICollection(Of EinkaufEntity) = New HashSet(Of EinkaufEntity)
 
 End Class

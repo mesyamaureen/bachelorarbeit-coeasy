@@ -22,11 +22,11 @@ Partial Public Class CoEasy_Database
         Throw New UnintentionalCodeFirstException()
     End Sub
 
-    Public Overridable Property tblCoworker() As DbSet(Of Coworker)
-    Public Overridable Property tblEinkauf() As DbSet(Of Einkauf)
-    Public Overridable Property tblEinkaufsposition() As DbSet(Of Einkaufsposition)
-    Public Overridable Property tblMitarbeiter() As DbSet(Of Mitarbeiter)
-    Public Overridable Property tblTicket() As DbSet(Of Ticket)
-    Public Overridable Property tblWLAN() As DbSet(Of WLAN)
+    Public Overridable Property tblCoworker() As DbSet(Of CoworkerEntity)
+    Public Overridable Property tblEinkauf() As DbSet(Of EinkaufEntity)
+    Public Overridable Property tblEinkaufsposition() As DbSet(Of EinkaufspositionEntity)
+    Public Overridable Property tblMitarbeiter() As DbSet(Of MitarbeiterEntity)
+    Public Overridable Property tblTicket() As DbSet(Of TicketEntity)
+    Public Overridable Property tblWLAN() As DbSet(Of WLANEntity)
 
 End Class
