@@ -1,7 +1,7 @@
 ﻿Public Class CoworkerViewModel
     Private mCoworker As Coworker
 
-    Property Coworker As Coworker
+    Public Property Coworker As Coworker
         Get
             Return mCoworker
         End Get

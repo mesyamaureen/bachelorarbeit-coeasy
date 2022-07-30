@@ -29,5 +29,43 @@ Namespace Controllers
             vmCow.Coworker = cow
             Return View(vmCow)
         End Function
+
+        'GET: /Jobanzeige/Hinzufuegen
+        Function Neu() As ActionResult
+            Dim cow As Coworker
+            Dim vmCow As CoworkerViewModel
+
+            cow = New Coworker 'Neue leere Jobanzeige erzeugen
+
+            'ViewModel vorbereiten
+            vmCow = New CoworkerViewModel
+            vmCow.Coworker = cow
+            Return View(vmCow) 'Neue Jobanzeige und Liste aller 
+            'branche als ViewModel an die View übergeben
+        End Function
+
+        'POST: /Jobanzeige/Hinzufuegen
+        <HttpPost>
+        Function Neu(pvmCow As CoworkerViewModel) As ActionResult
+            Dim cow As Coworker
+            Dim cowEntity As CoworkerEntity
+
+            'Jobanzeige aus dem ViewModel holen und in Jobanzeige entity umwandeln
+            cow = pvmCow.Coworker
+            cow.BenutzerID = Web.HttpContext.Current.Session("BenutzerID")
+            cowEntity = cow.gibAlsCowEntity
+            'speichern vorbereiten
+            db.tblCoworker.Attach(cowEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
+            db.Entry(cowEntity).State = EntityState.Added 'als Hinzugefügt markieren
+
+            'Vorsichtig Änderungen speichern
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                'Im Fehlerfall wird der Fehler im ViewModel vermerkt
+                ModelState.AddModelError(String.Empty, "Hinzufügen war nicht erfolgreich.")
+            End Try
+            Return RedirectToAction("AlleCoworkers", "AlleCoworkers") 'Zurück zur Übersicht über alle Jobanzeigen
+        End Function
     End Class
 End Namespace
