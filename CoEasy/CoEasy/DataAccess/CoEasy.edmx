@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CoEasy_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCoworker">
+          <Key>
+            <PropertyRef Name="CoworkerIdPk" />
+          </Key>
+          <Property Name="CoworkerIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Benutzername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passwort" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adresse" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Steuernummer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Firmenname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEinkauf">
+          <Key>
+            <PropertyRef Name="EinkaufIdPk" />
+          </Key>
+          <Property Name="EinkaufIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Totalpreis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Erstelldatum" Type="date" Nullable="false" />
+          <Property Name="CoworkerIdFk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEinkaufsposition">
+          <Key>
+            <PropertyRef Name="EinkaufspositionIdPk" />
+          </Key>
+          <Property Name="EinkaufspositionIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anzahl" Type="int" Nullable="false" />
+          <Property Name="Totalpreis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TicketIdFk" Type="int" Nullable="false" />
+          <Property Name="EinkaufIdFk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMitarbeiter">
+          <Key>
+            <PropertyRef Name="MitarbeiterIdPk" />
+          </Key>
+          <Property Name="MitarbeiterIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Benutzername" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passwort" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTicket">
+          <Key>
+            <PropertyRef Name="TicketIdPk" />
+          </Key>
+          <Property Name="TicketIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Preis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblWLAN">
+          <Key>
+            <PropertyRef Name="WlanIdPk" />
+          </Key>
+          <Property Name="WlanIdPk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WlanCode" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblEinkauf_tblCoworker">
+          <End Role="tblCoworker" Type="Self.tblCoworker" Multiplicity="1" />
+          <End Role="tblEinkauf" Type="Self.tblEinkauf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoworker">
+              <PropertyRef Name="CoworkerIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkauf">
+              <PropertyRef Name="CoworkerIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEinkaufsposition_tblEinkauf">
+          <End Role="tblEinkauf" Type="Self.tblEinkauf" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="Self.tblEinkaufsposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEinkauf">
+              <PropertyRef Name="EinkaufIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkaufsposition">
+              <PropertyRef Name="EinkaufIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEinkaufsposition_tblTicket">
+          <End Role="tblTicket" Type="Self.tblTicket" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="Self.tblEinkaufsposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTicket">
+              <PropertyRef Name="TicketIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkaufsposition">
+              <PropertyRef Name="TicketIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoEasy_DBModelStoreContainer">
+          <EntitySet Name="tblCoworker" EntityType="Self.tblCoworker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEinkauf" EntityType="Self.tblEinkauf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEinkaufsposition" EntityType="Self.tblEinkaufsposition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMitarbeiter" EntityType="Self.tblMitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTicket" EntityType="Self.tblTicket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWLAN" EntityType="Self.tblWLAN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblEinkauf_tblCoworker" Association="Self.FK_tblEinkauf_tblCoworker">
+            <End Role="tblCoworker" EntitySet="tblCoworker" />
+            <End Role="tblEinkauf" EntitySet="tblEinkauf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEinkaufsposition_tblEinkauf" Association="Self.FK_tblEinkaufsposition_tblEinkauf">
+            <End Role="tblEinkauf" EntitySet="tblEinkauf" />
+            <End Role="tblEinkaufsposition" EntitySet="tblEinkaufsposition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEinkaufsposition_tblTicket" Association="Self.FK_tblEinkaufsposition_tblTicket">
+            <End Role="tblTicket" EntitySet="tblTicket" />
+            <End Role="tblEinkaufsposition" EntitySet="tblEinkaufsposition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoEasy_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Coworker">
+          <Key>
+            <PropertyRef Name="CoworkerIdPk" />
+          </Key>
+          <Property Name="CoworkerIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Benutzername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passwort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Steuernummer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Firmenname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblEinkauf" Relationship="Self.FK_tblEinkauf_tblCoworker" FromRole="tblCoworker" ToRole="tblEinkauf" />
+        </EntityType>
+        <EntityType Name="Einkauf">
+          <Key>
+            <PropertyRef Name="EinkaufIdPk" />
+          </Key>
+          <Property Name="EinkaufIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Totalpreis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Erstelldatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CoworkerIdFk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblCoworker" Relationship="Self.FK_tblEinkauf_tblCoworker" FromRole="tblEinkauf" ToRole="tblCoworker" />
+          <NavigationProperty Name="tblEinkaufsposition" Relationship="Self.FK_tblEinkaufsposition_tblEinkauf" FromRole="tblEinkauf" ToRole="tblEinkaufsposition" />
+        </EntityType>
+        <EntityType Name="Einkaufsposition">
+          <Key>
+            <PropertyRef Name="EinkaufspositionIdPk" />
+          </Key>
+          <Property Name="EinkaufspositionIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anzahl" Type="Int32" Nullable="false" />
+          <Property Name="Totalpreis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TicketIdFk" Type="Int32" Nullable="false" />
+          <Property Name="EinkaufIdFk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEinkauf" Relationship="Self.FK_tblEinkaufsposition_tblEinkauf" FromRole="tblEinkaufsposition" ToRole="tblEinkauf" />
+          <NavigationProperty Name="tblTicket" Relationship="Self.FK_tblEinkaufsposition_tblTicket" FromRole="tblEinkaufsposition" ToRole="tblTicket" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="MitarbeiterIdPk" />
+          </Key>
+          <Property Name="MitarbeiterIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Benutzername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passwort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketIdPk" />
+          </Key>
+          <Property Name="TicketIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Preis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="tblEinkaufsposition" Relationship="Self.FK_tblEinkaufsposition_tblTicket" FromRole="tblTicket" ToRole="tblEinkaufsposition" />
+        </EntityType>
+        <EntityType Name="WLAN">
+          <Key>
+            <PropertyRef Name="WlanIdPk" />
+          </Key>
+          <Property Name="WlanIdPk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblEinkauf_tblCoworker">
+          <End Role="tblCoworker" Type="CoEasy_DBModel.Coworker" Multiplicity="1" />
+          <End Role="tblEinkauf" Type="CoEasy_DBModel.Einkauf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCoworker">
+              <PropertyRef Name="CoworkerIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkauf">
+              <PropertyRef Name="CoworkerIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEinkaufsposition_tblEinkauf">
+          <End Role="tblEinkauf" Type="CoEasy_DBModel.Einkauf" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.Einkaufsposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEinkauf">
+              <PropertyRef Name="EinkaufIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkaufsposition">
+              <PropertyRef Name="EinkaufIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEinkaufsposition_tblTicket">
+          <End Role="tblTicket" Type="CoEasy_DBModel.Ticket" Multiplicity="1" />
+          <End Role="tblEinkaufsposition" Type="CoEasy_DBModel.Einkaufsposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTicket">
+              <PropertyRef Name="TicketIdPk" />
+            </Principal>
+            <Dependent Role="tblEinkaufsposition">
+              <PropertyRef Name="TicketIdFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoEasy_Database" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCoworker" EntityType="CoEasy_DBModel.Coworker" />
+          <EntitySet Name="tblEinkauf" EntityType="CoEasy_DBModel.Einkauf" />
+          <EntitySet Name="tblEinkaufsposition" EntityType="CoEasy_DBModel.Einkaufsposition" />
+          <EntitySet Name="tblMitarbeiter" EntityType="CoEasy_DBModel.Mitarbeiter" />
+          <EntitySet Name="tblTicket" EntityType="CoEasy_DBModel.Ticket" />
+          <EntitySet Name="tblWLAN" EntityType="CoEasy_DBModel.WLAN" />
+          <AssociationSet Name="FK_tblEinkauf_tblCoworker" Association="Self.FK_tblEinkauf_tblCoworker">
+            <End Role="tblCoworker" EntitySet="tblCoworker" />
+            <End Role="tblEinkauf" EntitySet="tblEinkauf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEinkaufsposition_tblEinkauf" Association="Self.FK_tblEinkaufsposition_tblEinkauf">
+            <End Role="tblEinkauf" EntitySet="tblEinkauf" />
+            <End Role="tblEinkaufsposition" EntitySet="tblEinkaufsposition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEinkaufsposition_tblTicket" Association="Self.FK_tblEinkaufsposition_tblTicket">
+            <End Role="tblTicket" EntitySet="tblTicket" />
+            <End Role="tblEinkaufsposition" EntitySet="tblEinkaufsposition" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoEasy_DBModelStoreContainer" CdmEntityContainer="CoEasy_Database">
+          <EntitySetMapping Name="tblCoworker">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.Coworker">
+              <MappingFragment StoreEntitySet="tblCoworker">
+                <ScalarProperty Name="CoworkerIdPk" ColumnName="CoworkerIdPk" />
+                <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
+                <ScalarProperty Name="Passwort" ColumnName="Passwort" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Steuernummer" ColumnName="Steuernummer" />
+                <ScalarProperty Name="Firmenname" ColumnName="Firmenname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEinkauf">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.Einkauf">
+              <MappingFragment StoreEntitySet="tblEinkauf">
+                <ScalarProperty Name="EinkaufIdPk" ColumnName="EinkaufIdPk" />
+                <ScalarProperty Name="Totalpreis" ColumnName="Totalpreis" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Erstelldatum" ColumnName="Erstelldatum" />
+                <ScalarProperty Name="CoworkerIdFk" ColumnName="CoworkerIdFk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEinkaufsposition">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.Einkaufsposition">
+              <MappingFragment StoreEntitySet="tblEinkaufsposition">
+                <ScalarProperty Name="EinkaufspositionIdPk" ColumnName="EinkaufspositionIdPk" />
+                <ScalarProperty Name="Anzahl" ColumnName="Anzahl" />
+                <ScalarProperty Name="Totalpreis" ColumnName="Totalpreis" />
+                <ScalarProperty Name="TicketIdFk" ColumnName="TicketIdFk" />
+                <ScalarProperty Name="EinkaufIdFk" ColumnName="EinkaufIdFk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMitarbeiter">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.Mitarbeiter">
+              <MappingFragment StoreEntitySet="tblMitarbeiter">
+                <ScalarProperty Name="MitarbeiterIdPk" ColumnName="MitarbeiterIdPk" />
+                <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
+                <ScalarProperty Name="Passwort" ColumnName="Passwort" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTicket">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.Ticket">
+              <MappingFragment StoreEntitySet="tblTicket">
+                <ScalarProperty Name="TicketIdPk" ColumnName="TicketIdPk" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+                <ScalarProperty Name="Preis" ColumnName="Preis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWLAN">
+            <EntityTypeMapping TypeName="CoEasy_DBModel.WLAN">
+              <MappingFragment StoreEntitySet="tblWLAN">
+                <ScalarProperty Name="WlanIdPk" ColumnName="WlanIdPk" />
+                <ScalarProperty Name="WlanCode" ColumnName="WlanCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

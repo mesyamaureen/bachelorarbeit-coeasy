@@ -173,38 +173,38 @@
     <Compile Include="Controllers\MitarbeiterController.vb" />
     <Compile Include="Controllers\TicketController.vb" />
     <Compile Include="Controllers\WLANController.vb" />
-    <Compile Include="DataAccess\CoEasy_DB.Context.vb">
+    <Compile Include="DataAccess\CoEasy.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoEasy_DB.Context.tt</DependentUpon>
+      <DependentUpon>CoEasy.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\CoEasy_DB.Designer.vb">
+    <Compile Include="DataAccess\CoEasy.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoEasy_DB.edmx</DependentUpon>
+      <DependentUpon>CoEasy.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\CoEasy_DB.vb">
+    <Compile Include="DataAccess\CoEasy.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\CoworkerEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\Coworker.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\EinkaufEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\Einkauf.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\EinkaufspositionEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\Einkaufsposition.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\MitarbeiterEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\Mitarbeiter.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\TicketEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\Ticket.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\WLANEntity.vb">
-      <DependentUpon>CoEasy_DB.tt</DependentUpon>
+    <Compile Include="DataAccess\WLAN.vb">
+      <DependentUpon>CoEasy.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -266,15 +266,15 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DataAccess\CoEasy_DB.Context.tt">
+    <Content Include="DataAccess\CoEasy.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoEasy_DB.edmx</DependentUpon>
-      <LastGenOutput>CoEasy_DB.Context.vb</LastGenOutput>
+      <DependentUpon>CoEasy.edmx</DependentUpon>
+      <LastGenOutput>CoEasy.Context.vb</LastGenOutput>
     </Content>
-    <Content Include="DataAccess\CoEasy_DB.tt">
+    <Content Include="DataAccess\CoEasy.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoEasy_DB.edmx</DependentUpon>
-      <LastGenOutput>CoEasy_DB.vb</LastGenOutput>
+      <DependentUpon>CoEasy.edmx</DependentUpon>
+      <LastGenOutput>CoEasy.vb</LastGenOutput>
     </Content>
     <Content Include="MVC.cd" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -283,12 +283,12 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="DataAccess\CoEasy_DB.edmx">
+    <EntityDeploy Include="DataAccess\CoEasy.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CoEasy_DB.Designer.vb</LastGenOutput>
+      <LastGenOutput>CoEasy.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DataAccess\CoEasy_DB.edmx.diagram">
-      <DependentUpon>CoEasy_DB.edmx</DependentUpon>
+    <Content Include="DataAccess\CoEasy.edmx.diagram">
+      <DependentUpon>CoEasy.edmx</DependentUpon>
     </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
