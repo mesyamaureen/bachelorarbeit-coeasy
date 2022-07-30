@@ -417,6 +417,7 @@
     <Content Include="Views\Einkauf\Neu.vbhtml" />
     <Content Include="Views\Einkaufsposition\NeuWLAN.vbhtml" />
     <Content Include="Views\Coworker\Oeffnen.vbhtml" />
+    <Content Include="Views\Coworker\Neu.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

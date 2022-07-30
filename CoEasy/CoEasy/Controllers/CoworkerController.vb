@@ -41,7 +41,6 @@ Namespace Controllers
             vmCow = New CoworkerViewModel
             vmCow.Coworker = cow
             Return View(vmCow) 'Neue Jobanzeige und Liste aller 
-            'branche als ViewModel an die View übergeben
         End Function
 
         'POST: /Jobanzeige/Hinzufuegen

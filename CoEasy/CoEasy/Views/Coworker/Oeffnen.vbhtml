@@ -9,7 +9,7 @@ End Code
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CoEasy</title>
+    <title>Coworker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
@@ -93,7 +93,7 @@ End Code
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     @Html.LabelFor(Function(m) m.Coworker.Adresse, New With {.class = "control-label"})
-                                    @Html.TextBoxFor(Function(m) m.Coworker.Adresse, New With {.class = "form-control", .type = "password"})
+                                    @Html.TextBoxFor(Function(m) m.Coworker.Adresse, New With {.class = "form-control"})
                                     @Html.ValidationMessageFor(Function(m) m.Coworker.Adresse)
                                 </div>
                             </div>
@@ -104,7 +104,7 @@ End Code
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     @Html.LabelFor(Function(m) m.Coworker.Steuernummer, New With {.class = "control-label"})
-                                    @Html.TextBoxFor(Function(m) m.Coworker.Steuernummer, New With {.class = "form-control", .type = "password"})
+                                    @Html.TextBoxFor(Function(m) m.Coworker.Steuernummer, New With {.class = "form-control"})
                                     @Html.ValidationMessageFor(Function(m) m.Coworker.Steuernummer)
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ End Code
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     @Html.LabelFor(Function(m) m.Coworker.Firmenname, New With {.class = "control-label"})
-                                    @Html.TextBoxFor(Function(m) m.Coworker.Firmenname, New With {.class = "form-control", .type = "password"})
+                                    @Html.TextBoxFor(Function(m) m.Coworker.Firmenname, New With {.class = "form-control"})
                                     @Html.ValidationMessageFor(Function(m) m.Coworker.Firmenname)
                                 </div>
                             </div>
