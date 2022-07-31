@@ -11,6 +11,7 @@ Namespace Controllers
         Function NeuWLAN() As ActionResult
             Dim einkPos As Einkaufsposition
             Dim einkposEntity As EinkaufspositionEntity = New EinkaufspositionEntity()
+            Dim einkposChosenEntity As EinkaufspositionEntity = New EinkaufspositionEntity()
             Dim einkEntity As EinkaufEntity
             Dim eink As Einkauf = New Einkauf()
             Dim wlanEntity As WLANEntity = New WLANEntity()
@@ -39,6 +40,9 @@ Namespace Controllers
             For Each einkposEntity In db.tblEinkaufsposition.ToList
                 If einkposEntity.EinkaufIdFk = einkId Then
                     einkPos = New Einkaufsposition(einkposEntity)
+                    If lstEinkaufsposition.Count = 0 Then
+                        einkposChosenEntity = einkposEntity
+                    End If
                     lstEinkaufsposition.Add(einkPos)
                 End If
             Next
@@ -62,7 +66,7 @@ Namespace Controllers
             vmEinkPos.Einkaufsposition = lstEinkaufsposition.ElementAt(0)
             vmEinkPos.Einkaufsposition.AnzahlWLAN = lstEinkaufsposition.ElementAt(0).AnzahlWLAN - 1
             db.Entry(wlanEntity).State = EntityState.Detached
-            db.Entry(einkposEntity).State = EntityState.Detached
+            db.Entry(einkposChosenEntity).State = EntityState.Detached
             'vmEinkPos.Wlan.WlanCode = wlanCode
             'vmEinkPos.EinkaufID = queryEinkaufID.FirstOrDefault.EinkaufID
 

@@ -42,8 +42,10 @@ End Code
                         '</div>
                         @<div>
                             @Html.HiddenFor(Function(m) Model.WlanID)
+                            @Html.HiddenFor(Function(m) Model.WlanCode)
                             @Html.HiddenFor(Function(m) Model.Einkaufsposition.EinkaufspositionID)
                             @Html.HiddenFor(Function(m) Model.Einkaufsposition.Totalpreis)
+                            @Html.HiddenFor(Function(m) Model.Einkaufsposition.AnzahlWLAN)
                             @Html.HiddenFor(Function(m) Model.Einkaufsposition.EinkaufID)
                             @Html.HiddenFor(Function(m) Model.Einkaufsposition.TicketID)
                         </div>

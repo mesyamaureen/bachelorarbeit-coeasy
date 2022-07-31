@@ -27,9 +27,9 @@ Public Class Einkaufsposition
         mintTicketId = -1
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahl As Integer, pdblTotalpreis As Double, pintEinkaufId As Integer, pintTicketId As Integer) 'pTicket As Ticket, pEinkauf As Einkauf) 'pstrTicket As String
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahlWLAN As Integer, pdblTotalpreis As Double, pintEinkaufId As Integer, pintTicketId As Integer) 'pTicket As Ticket, pEinkauf As Einkauf) 'pstrTicket As String
         mintEinkaufspositionID = pintEinkaufspositionID
-        mintAnzahlWLAN = pintAnzahl
+        mintAnzahlWLAN = pintAnzahlWLAN
         mdblTotalpreis = pdblTotalpreis
         'mTicket = pTicket
         mintEinkaufId = pintEinkaufId
