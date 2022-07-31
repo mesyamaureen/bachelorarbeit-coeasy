@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="View">
+    <Position X="0.5" Y="0.5" Height="0.323" Width="1.45" />
+  </Comment>
+  <Comment CommentText="Controller">
+    <Position X="2.589" Y="0.5" Height="0.323" Width="1.695" />
+  </Comment>
+  <Comment CommentText="Model">
+    <Position X="5.198" Y="0.5" Height="0.323" Width="1.695" />
+  </Comment>
+  <Comment CommentText="AlleTickets">
+    <Position X="0.542" Y="1.219" Height="0.323" Width="0.872" />
+  </Comment>
+  <Comment CommentText="Bearbeiten">
+    <Position X="0.547" Y="1.786" Height="0.323" Width="0.872" />
+  </Comment>
+  <Comment CommentText="Löschen">
+    <Position X="0.536" Y="2.495" Height="0.323" Width="0.872" />
+  </Comment>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

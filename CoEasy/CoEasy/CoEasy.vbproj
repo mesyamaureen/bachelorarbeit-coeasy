@@ -290,6 +290,7 @@
     <Content Include="DataAccess\CoEasy.edmx.diagram">
       <DependentUpon>CoEasy.edmx</DependentUpon>
     </Content>
+    <Content Include="MVCPRodukte.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -417,6 +418,9 @@
     <Content Include="Views\Einkauf\Neu.vbhtml" />
     <Content Include="Views\Einkaufsposition\NeuWLAN.vbhtml" />
     <Content Include="Views\Coworker\Oeffnen.vbhtml" />
+    <Content Include="Views\Coworker\Neu.vbhtml" />
+    <Content Include="Views\Ticket\Loeschen.vbhtml" />
+    <Content Include="Views\AlleTickets\AllTickets.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

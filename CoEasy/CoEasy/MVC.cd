@@ -1,86 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="CONTROLLER">
-    <Position X="2.703" Y="1.385" Height="0.75" Width="1.7" />
+    <Position X="1.746" Y="1.523" Height="0.331" Width="1.7" />
   </Comment>
   <Comment CommentText="VIEW">
-    <Position X="0.5" Y="1.333" Height="0.75" Width="1.7" />
+    <Position X="0.5" Y="1.534" Height="0.331" Width="1.117" />
   </Comment>
   <Comment CommentText="MODEL">
-    <Position X="6.75" Y="1.25" Height="0.75" Width="1.7" />
+    <Position X="5.25" Y="1.497" Height="0.331" Width="6.18" />
   </Comment>
-  <Class Name="CoEasy.Einkaufsliste">
-    <Position X="5.25" Y="7.5" Width="1.5" />
+  <Comment CommentText="Oeffnen">
+    <Position X="0.574" Y="4.572" Height="0.377" Width="1.017" />
+  </Comment>
+  <Comment CommentText="Neu">
+    <Position X="0.556" Y="5.21" Height="0.377" Width="1.017" />
+  </Comment>
+  <Comment CommentText="AlleCoworkers">
+    <Position X="0.592" Y="2.36" Height="0.377" Width="1.017" />
+  </Comment>
+  <Class Name="CoEasy.Controllers.CoworkerController">
+    <Position X="1.75" Y="4.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Einkaufsliste.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.Einkauf">
-    <Position X="13.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAIAAwQCAACAQAAACAAAACAAAAAAABAA=</HashCode>
-      <FileName>Models\Einkauf.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.Einkaufsposition">
-    <Position X="16.25" Y="3.5" Width="2" />
-    <TypeIdentifier>
-      <HashCode>gABgAAABAAQAAIACAQAQAAAAgAATAgAAAAAAAEAAJAA=</HashCode>
-      <FileName>Models\Einkaufsposition.vb</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Ticket" />
-      <Property Name="Wlan" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Einkaeufe" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="CoEasy.EinkaufspositionListe">
-    <Position X="5.25" Y="4.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
-      <FileName>Models\EinkaufspositionListe.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.Ticket">
-    <Position X="19" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACCAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAQABA=</HashCode>
-      <FileName>Models\Ticket.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.WLAN">
-    <Position X="19.25" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAIAAA=</HashCode>
-      <FileName>Models\WLAN.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.Benutzer">
-    <Position X="9.5" Y="4.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAACAAAAADAAAAAAAAAAAAQAAAAAAAgACAACQQgCgAA=</HashCode>
-      <FileName>Models\Benutzer.vb</FileName>
+      <HashCode>AAAAAAAAAAAQACIAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CoworkerController.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CoEasy.Coworker">
-    <Position X="11.25" Y="6.25" Width="1.5" />
+    <Position X="7.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAkAAAAAAAAQAgAAAAQAACIAAAQABAAAAAAQgAAAAA=</HashCode>
       <FileName>Models\Coworker.vb</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.CoworkerListe">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CoworkerListe.vb</FileName>
+    </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Einkaeufe" />
+      <Property Name="Coworker" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="CoEasy.Mitarbeiter">
-    <Position X="9.5" Y="2.75" Width="1.5" />
+  <Class Name="CoEasy.CoworkerViewModel">
+    <Position X="9.5" Y="4" Width="2" />
+    <AssociationLine Name="Coworker" Type="CoEasy.Coworker" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.312" Y="4" />
+        <Point X="10.312" Y="3.125" />
+        <Point X="9.25" Y="3.125" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
-      <FileName>Models\Mitarbeiter.vb</FileName>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\CoworkerViewModel.vb</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Coworker" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CoEasy.Controllers.AlleCoworkersController">
+    <Position X="1.75" Y="2.25" Width="2.25" />
+    <AssociationLine Name="mCoworkerListe" Type="CoEasy.CoworkerListe" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="3.25" />
+        <Point X="5.25" Y="3.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAQAAIAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AlleCoworkersController.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="mCoworkerListe" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
