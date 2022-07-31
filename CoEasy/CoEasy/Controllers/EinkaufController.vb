@@ -6,7 +6,7 @@ Namespace Controllers
         Inherits Controller
         Private db As CoEasy_Database = New CoEasy_Database
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
-        Public Shared mEinkaufsliste As Einkaufsliste
+        'Public Shared mEinkaufsliste As Einkaufsliste
 
         'GET: /Einkaeufe/Oeffnen
         Function Oeffnen(ID As Integer) As ActionResult

@@ -9,38 +9,65 @@
   <Comment CommentText="Model">
     <Position X="4.855" Y="0.5" Height="0.323" Width="4.887" />
   </Comment>
-  <Comment CommentText="NeuWLAN">
-    <Position X="0.542" Y="1.219" Height="0.323" Width="0.872" />
+  <Comment CommentText="Einkaeufe">
+    <Position X="0.5" Y="1.167" Height="0.323" Width="1.117" />
   </Comment>
-  <Class Name="CoEasy.Controllers.EinkaufspositionController">
-    <Position X="2" Y="1" Width="2.25" />
+  <Comment CommentText="Neu">
+    <Position X="0.505" Y="2.281" Height="0.323" Width="1.117" />
+  </Comment>
+  <Class Name="CoEasy.Controllers.CoEasyController">
+    <Position X="2" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAQAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Controllers\EinkaufspositionController.vb</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="CoEasy.EinkaufspositionViewModel">
-    <Position X="7" Y="2.5" Width="2.25" />
-    <AssociationLine Name="Einkaufsposition" Type="CoEasy.Einkaufsposition" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="7.438" Y="2.5" />
-        <Point X="7.438" Y="1.75" />
-        <Point X="6.5" Y="1.75" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>xAAAAAgAQAAAAAAQAAAAABAAAAAKAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>ViewModel\EinkaufspositionViewModel.vb</FileName>
+      <HashCode>AAAhAAAAAAAQAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CoEasyController.vb</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Einkaufsposition" />
+      <Field Name="mEinkaufsliste" />
     </ShowAsAssociation>
   </Class>
+  <Class Name="CoEasy.Controllers.EinkaufController">
+    <Position X="2" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQACMAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\EinkaufController.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Einkaufsliste">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Einkaufsliste.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Einkauf">
+    <Position X="6.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAQQAAIAAwQCAACAQAAAKAAACCAIAAAAABAA=</HashCode>
+      <FileName>Models\Einkauf.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="EinkaufListe" />
+    </ShowAsCollectionAssociation>
+  </Class>
   <Class Name="CoEasy.Einkaufsposition">
-    <Position X="5" Y="1" Width="1.5" />
+    <Position X="8" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gCBgAAAAAAIAAIAAAQAQAAAAgAATAAAAAAAQAAAQJAA=</HashCode>
       <FileName>Models\Einkaufsposition.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.EinkaufspositionListe">
+    <Position X="10.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Models\EinkaufspositionListe.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.WLAN">
+    <Position X="10" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAAAAAAAAAAAAAABAAAAAAAgAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\WLAN.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
