@@ -59,8 +59,8 @@ End Code
                                     <td>@einzelnerTicket.Bezeichnung</td>
                                     <td>@einzelnerTicket.Preis</td>
                                     <td>
-                                        @Html.ActionLink("Bearbeiten", "Bearbeiten", "Ticket", New With {.ID = einzelnerTicket.TicketID}, New With {.class = "btn btn-info", .role = "button"})
-                                        @Html.ActionLink("Löschen", "Loeschen", "Ticket", New With {.ID = einzelnerTicket.TicketID}, New With {.class = "btn btn-info", .role = "button"})
+                                        @Html.ActionLink("Bearbeiten", "Bearbeiten", "Ticket", New With {.ID = einzelnerTicket.TicketID}, New With {.class = "btn btn-info btn-sm", .role = "button"})
+                                        @Html.ActionLink("Löschen", "Loeschen", "Ticket", New With {.ID = einzelnerTicket.TicketID}, New With {.class = "btn btn-danger btn-sm", .role = "button"})
                                     </td>
                                 </tr>
                             Next

@@ -14,7 +14,7 @@ End Code
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <title>Loeschen</title>
+    <title>Ticket löschen</title>
 </head>
 <body>
     <div id="dlgWirklich" class="modal fade" role="dialog">
@@ -23,24 +23,24 @@ End Code
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Jobanzeige "@Html.Encode(Model.Titel)" löschen</h4>
+                    <h4 class="modal-title">Ticket "@Html.Encode(Model.Ticket.Bezeichnung)" löschen?</h4>
                     <button type="button" class="close" aria-label="Close">
-                        @Html.ActionLink("x", "meineJobanzeigen", Nothing, New With {.class = "btn close"})
+                        @Html.ActionLink("x", "AlleTickets", "Alle Tickets", Nothing, New With {.class = "btn close"})
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    <p>Möchten Sie die Jobanzeige "@Html.Encode(Model.Titel)" wirklich löschen?</p>
+                    <p>Möchten Sie die Jobanzeige "@Html.Encode(Model.Ticket.Bezeichnung)" wirklich löschen?</p>
                 </div>
 
                 <div class="modal-footer">
                     @Using Html.BeginForm
                         @<div>
-                            @Html.HiddenFor(Function(m) Model.JobID)
+                            @Html.HiddenFor(Function(m) Model.Ticket.TicketID)
                         </div>
                         @<div>
-                            @Html.ActionLink("Nein", "meineJobanzeigen", Nothing, New With {.class = "btn btn-secondary"})
-                            <input type="submit" class="btn btn-danger " value="Löschen" />
+                            @Html.ActionLink("Nein", "Alle Tickets", "Alle Tickets", Nothing, New With {.class = "btn btn-secondary"})
+                            <input type="submit" class="btn btn-danger" value="Löschen" />
                         </div>
                     End Using
 
