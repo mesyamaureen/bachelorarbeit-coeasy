@@ -6,7 +6,7 @@
     Private mintEinkaufspositionId As Integer
     Private mEinkaufsposition As Einkaufsposition
 
-    Property Einkaufsposition As Einkaufsposition
+    Public Property Einkaufsposition As Einkaufsposition
         Get
             Return mEinkaufsposition
         End Get
@@ -15,7 +15,7 @@
         End Set
     End Property
 
-    Property EinkaufspositionId As Integer
+    Public Property EinkaufspositionId As Integer
         Get
             Return mintEinkaufspositionId
         End Get
@@ -33,7 +33,7 @@
     '    End Set
     'End Property
 
-    Property WlanID As Integer
+    Public Property WlanID As Integer
         Get
             Return mintWlanID
         End Get
@@ -42,7 +42,7 @@
         End Set
     End Property
 
-    Property WlanCode As String
+    Public Property WlanCode As String
         Get
             Return mstrWlan
         End Get
@@ -51,7 +51,7 @@
         End Set
     End Property
 
-    Property EinkaufID As Integer
+    Public Property EinkaufID As Integer
         Get
             Return einkID
         End Get

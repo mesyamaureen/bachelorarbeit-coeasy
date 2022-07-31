@@ -5,7 +5,7 @@ Namespace Controllers
         Inherits Controller
         Private db As CoEasy_Database = New CoEasy_Database
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
-        Public Shared mlstTickets As List(Of Ticket)
+        Public Shared mTicketListe As TicketListe
 
         ' GET: AlleTickets
         Function AlleTickets() As ActionResult
