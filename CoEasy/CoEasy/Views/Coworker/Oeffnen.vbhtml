@@ -18,7 +18,6 @@ End Code
             <!-- sideMenu -->
             <div class="col col-lg-2" style="background-color: #D59C1D;">
                 <img src="../Bilder/2a6d0db3fe8f4fc9a7081f9879ace954.png" alt="" width="72" height="72">
-                <div>hallo Peter</div>
                 <div>
                     <ul>
                         <li>@Html.ActionLink("Startseite", "Einkaeufe", "CoEasy")</li>

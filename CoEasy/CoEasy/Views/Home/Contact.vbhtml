@@ -6,10 +6,10 @@ End Code
 <h3>@ViewData("Message")</h3>
 
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
+    One Mesya Way<br />
+    Berlin, Deutschland 0000-1111<br />
     <abbr title="Phone">P:</abbr>
-    425.555.0100
+    123.123.1234
 </address>
 
 <address>

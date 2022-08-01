@@ -21,11 +21,11 @@ End Code
     @*<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="../Css/style.css" rel="stylesheet">*@
 </head>
-<body class="text-center" style="background-color: #D59C1D;">
-        <div class="mb-4" style="display:flex;justify-content:center;align-items:center;">
+<body class="d-flex justify-content-center" style="background-color: #D59C1D;">
+        <div class="mb-4 pb-4" style="display: flex; justify-content: center; align-items: center;">
             <img src="~/Bilder/2a6d0db3fe8f4fc9a7081f9879ace954.png" alt="" width="72" height="72">
         </div>
-        <div style="display: flex; justify-content: center; align-items: center; flex-direction:column;">
+        <div style="display: flex; justify-content: space-around; align-items: center; flex-direction:column;">
             @Using Html.BeginForm("Einloggen", "Anmeldung", FormMethod.Post)
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(True)
@@ -42,12 +42,10 @@ End Code
                 </div>
 
                 @<div>
-                    @*@Html.ActionLink("Passwort vergessen", "Einlogen", Nothing, New With {.class = "btn btn-default", .role = "button"})*@
                     <input type="submit" class="btn btn-primary" value="Login" />
                 </div>
             End Using
         </div>
-    @*</form>*@
 
 </body>
 </html>

@@ -13,7 +13,7 @@ End Code
 </head>
 <body>
     <div>
-        test ticket
+        Ticket
     </div>
 
     <div class="col">
