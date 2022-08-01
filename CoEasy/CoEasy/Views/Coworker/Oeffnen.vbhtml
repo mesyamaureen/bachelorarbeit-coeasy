@@ -25,7 +25,7 @@ End Code
                         <li>@Html.ActionLink("Coworkers", "AlleCoworkers", "AlleCoworkers")</li>
                         <li>@Html.ActionLink("Mitarbeiter", "AlleMitarbeiter", "AlleMitarbeiter")</li>
                         <li>@Html.ActionLink("Mein Profil", "Profil", "MeinProfil")</li>
-                        <li>@Html.ActionLink("Ausloggen", "Ausloggen", "Anmeldung")</li>
+                        <li>@Html.ActionLink("Ausloggen", "Einloggen", "Anmeldung")</li>
                     </ul>
                 </div>
             </div>

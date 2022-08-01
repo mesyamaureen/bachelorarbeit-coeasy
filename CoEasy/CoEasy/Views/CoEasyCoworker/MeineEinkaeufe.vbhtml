@@ -22,8 +22,8 @@ End Code
                 <div>
                     <ul>
                         <li>@Html.ActionLink("Startseite", "MeineEinkaeufe", "CoEasyCoworker")</li>
-                        <li>@Html.ActionLink("Mein Profil", "MeinProfil", "MeinProfil")</li>
-                        <li>@Html.ActionLink("Ausloggen", "Ausloggen", "Anmeldung")</li>
+                        <li>@Html.ActionLink("Mein Profil", "Profil", "MeinProfil")</li>
+                        <li>@Html.ActionLink("Ausloggen", "Einloggen", "Anmeldung")</li>
                     </ul>
                 </div>
             </div>
