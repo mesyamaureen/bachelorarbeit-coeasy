@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CoEasy.Benutzer">
+    <Position X="1.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAADAAAAAAAAAAAAQAAAAAAAgACAACQQgCgAA=</HashCode>
+      <FileName>Models\Benutzer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Coworker">
+    <Position X="1.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAAAAAQAgAAAAQAACIAAAQABAAAAAAQgAAAAA=</HashCode>
+      <FileName>Models\Coworker.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Einkauf">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAQQAAIAAwQCAQCAQAAAKAAACCAIAAAAABAA=</HashCode>
+      <FileName>Models\Einkauf.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Coworker" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CoEasy.Einkaufsposition">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCBAAAAAAAIAQIACAQAQAAAAgAASAAAAAAAQAAAQJAA=</HashCode>
+      <FileName>Models\Einkaufsposition.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Wlan" />
+      <Property Name="Ticket" />
+      <Property Name="Einkauf" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CoEasy.Mitarbeiter">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Models\Mitarbeiter.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.Ticket">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCAAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAgAQABA=</HashCode>
+      <FileName>Models\Ticket.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CoEasy.WLAN">
+    <Position X="9.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAAAAAAAAAAAAAABAAAAAAAgAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\WLAN.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
