@@ -1,6 +1,6 @@
 ﻿@ModelType CoEasy.CoworkerViewModel
 @Code
-    ViewData("Title") = "Oeffnen"
+    Layout = Nothing
 End Code
 
 <!DOCTYPE html>
@@ -123,7 +123,6 @@ End Code
 
                         @<div class="mb-lg-5 mt-lg-4">
                                 @Html.ActionLink("Abbrechen", "AlleCoworkers", "AlleCoworkers", Nothing, New With {.class = "btn btn-default", .role = "button"})
-                             <input type="submit" class="btn btn-outline-danger" value="Schließen" />
                         </div>
                     End Using
                 </div>
@@ -132,11 +131,11 @@ End Code
     </div>
 
 
-
-    <!-- Bootstrap -->
+        <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
