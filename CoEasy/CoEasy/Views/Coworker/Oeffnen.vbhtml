@@ -22,9 +22,9 @@ End Code
                 <div>
                     <ul>
                         <li>@Html.ActionLink("Startseite", "Einkaeufe", "CoEasy")</li>
-                        <li>@Html.ActionLink("Tickets", "Tickets", "AlleTickets")</li>
-                        <li>@Html.ActionLink("Coworkers", "Coworkers", "AlleCoworkers")</li>
-                        <li>@Html.ActionLink("Mitarbeiter", "Mitarbeiter", "AlleMitarbeiter")</li>
+                        <li>@Html.ActionLink("Tickets", "AlleTickets", "AlleTickets")</li>
+                        <li>@Html.ActionLink("Coworkers", "AlleCoworkers", "AlleCoworkers")</li>
+                        <li>@Html.ActionLink("Mitarbeiter", "AlleMitarbeiter", "AlleMitarbeiter")</li>
                         <li>@Html.ActionLink("Mein Profil", "Profil", "MeinProfil")</li>
                         <li>@Html.ActionLink("Ausloggen", "Ausloggen", "Anmeldung")</li>
                     </ul>
