@@ -41,52 +41,88 @@ Namespace Controllers
             Return RedirectToAction("Einkaeufe", "CoEasy") 'zurück zur Übersicht Einkäufe
         End Function
 
+        'GET: /Einkauf/Neu
         Function Neu() As ActionResult
             Dim eink As Einkauf
             Dim ticket As Ticket
+            Dim coworker As Coworker
             Dim lstTickets As List(Of Ticket)
+            Dim lstCoworkers As List(Of Coworker)
+            Dim einkpos As Einkaufsposition
             Dim vmEink As EinkaufViewModel
 
-            eink = New Einkauf 'Neue leere Jobanzeige erzeugen
+            eink = New Einkauf 'Neue leere Modelle erzeugen
+            einkpos = New Einkaufsposition
 
-            'Alle Branche aus Datenbank laden
+            'Alle Tickets aus Datenbank laden
             lstTickets = New List(Of Ticket)
             For Each ticketEntity In db.tblTicket.ToList
                 ticket = New Ticket(ticketEntity)
                 lstTickets.Add(ticket)
             Next
 
+            'Alle Coworkers aus Datenbank laden
+            lstCoworkers = New List(Of Coworker)
+            For Each coworkerEntity In db.tblCoworker.ToList
+                coworker = New Coworker(coworkerEntity)
+                lstCoworkers.Add(coworker)
+            Next
+
             'ViewModel vorbereiten
             vmEink = New EinkaufViewModel
             vmEink.Einkauf = eink
             vmEink.ListeTickets = lstTickets
-            Return View(vmEink) 'Neue Jobanzeige und Liste aller 
-            'branche als ViewModel an die View übergeben
+            vmEink.ListeCoworkers = lstCoworkers
+            vmEink.Einkaufsposition = einkpos
+            Return View(vmEink) 'Neuer Einkauf und Liste aller 
+            'Tickets und Coworkers als ViewModel an die View übergeben
         End Function
 
-        'POST: /Jobanzeige/Hinzufuegen
+        'POST: /Einkauf/Neu
         <HttpPost>
         Function Neu(pvmEink As EinkaufViewModel) As ActionResult
             Dim eink As Einkauf
             Dim einkEntity As EinkaufEntity
             Dim ticket As Ticket
             Dim lstTickets As List(Of Ticket)
+            Dim coworker As Coworker
+            Dim lstCoworkers As List(Of Coworker)
+            Dim einkpos As Einkaufsposition
+            Dim einkposEntity As EinkaufspositionEntity
 
             If Not ModelState.IsValid Then
-                lstTickets = New List(Of Ticket) 'Alle Branche aus Datenbank laden
+                lstTickets = New List(Of Ticket) 'Alle Tickets aus Datenbank laden
+                lstCoworkers = New List(Of Coworker)
+                einkpos = New Einkaufsposition
 
                 For Each ticketEntity In db.tblTicket.ToList
                     ticket = New Ticket(ticketEntity)
                     lstTickets.Add(ticket)
                 Next
+
+                For Each coworkerEntity In db.tblCoworker.ToList
+                    coworker = New Coworker(coworkerEntity)
+                    lstCoworkers.Add(coworker)
+                Next
+
                 pvmEink.ListeTickets = lstTickets
+                pvmEink.ListeCoworkers = lstCoworkers
+                pvmEink.Einkaufsposition = einkpos
                 Return View(pvmEink)
             End If
 
-            'Jobanzeige aus dem ViewModel holen und in Jobanzeige entity umwandeln
+            'Einkauf und Einkausposition aus dem ViewModel holen
             eink = pvmEink.Einkauf
-            'job.UnternehmerID = Web.HttpContext.Current.Session("BenutzerID")
+            einkpos = pvmEink.Einkaufsposition
+
+            'Datenaustausch vor dem Speichern
+            einkpos.Totalpreis = db.tblTicket.ToList.Find(Function(t) t.TicketIdPk = einkpos.TicketID).Preis
+            eink.Totalpreis = einkpos.Totalpreis
+
+            'in Entity umwandeln
             einkEntity = eink.gibAlsEinkaufEntity
+            einkposEntity = einkpos.gibAlsEinkPositionEntity
+
             'speichern vorbereiten
             db.tblEinkauf.Attach(einkEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
             db.Entry(einkEntity).State = EntityState.Added 'als Hinzugefügt markieren
@@ -96,9 +132,23 @@ Namespace Controllers
                 db.SaveChanges()
             Catch ex As Exception
                 'Im Fehlerfall wird der Fehler im ViewModel vermerkt
-                ModelState.AddModelError(String.Empty, "Hinzufügen war nicht erfolgreich.")
+                ModelState.AddModelError(String.Empty, "Hinzufügen von Einkauf war nicht erfolgreich.")
             End Try
-            Return RedirectToAction("Einkaeufe", "CoEasy") 'Zurück zur Übersicht über alle Jobanzeigen
+
+            'speichern von Einkaufsposition vorbereiten
+            einkposEntity.EinkaufIdFk = db.tblEinkauf.ToList.Last.EinkaufIdPk 'Zuweisung von EinkaufID, da es erst nach dem Speichern veröffentlicht wurde
+            db.tblEinkaufsposition.Attach(einkposEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
+            db.Entry(einkposEntity).State = EntityState.Added 'als Hinzugefügt markieren
+
+            'Vorsichtig Änderungen speichern
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                'Im Fehlerfall wird der Fehler im ViewModel vermerkt
+                ModelState.AddModelError(String.Empty, "Hinzufügen von Einkaufsposition war nicht erfolgreich.")
+            End Try
+
+            Return RedirectToAction("Einkaeufe", "CoEasy") 'Zurück zur Übersicht über alle Einkäufe
         End Function
 
     End Class

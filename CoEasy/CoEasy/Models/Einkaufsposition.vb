@@ -7,16 +7,16 @@ Public Class Einkaufsposition
     Private mintEinkaufspositionID As Integer
     Private mintAnzahlWLAN As Integer
     Private mdblTotalpreis As Double
-    'Private mTicket As Ticket
+    Private mTicket As Ticket
     Private mWlan As WLAN
     Private mlstEinkaufspositionliste As List(Of Einkaufsposition)
-    'Private mEinkauf As Einkauf
+    Private mEinkauf As Einkauf
     Private mEinkaeufe As List(Of Einkauf)
     Private mintEinkaufId As Integer
     Private mintTicketId As Integer
 
     Sub New()
-        mintEinkaufspositionID = Nothing
+        mintEinkaufspositionID = -1
         mintAnzahlWLAN = Nothing
         mdblTotalpreis = Nothing
         'mTicket = Nothing
@@ -109,23 +109,32 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    Public Property Einkaeufe As List(Of Einkauf)
+    'Public Property Einkaeufe As List(Of Einkauf)
+    '    Get
+    '        Return mEinkaeufe
+    '    End Get
+    '    Set(value As List(Of Einkauf))
+    '        mEinkaeufe = value
+    '    End Set
+    'End Property
+
+    Public Property Einkauf As Einkauf
         Get
-            Return mEinkaeufe
+            Return mEinkauf
         End Get
-        Set(value As List(Of Einkauf))
-            mEinkaeufe = value
+        Set(value As Einkauf)
+            mEinkauf = value
         End Set
     End Property
 
-    'Public Property Einkauf As Einkauf
-    '    Get
-    '        Return mEinkauf
-    '    End Get
-    '    Set(value As Einkauf)
-    '        mEinkauf = value
-    '    End Set
-    'End Property
+    Public Property Ticket As Ticket
+        Get
+            Return mTicket
+        End Get
+        Set(value As Ticket)
+            mTicket = value
+        End Set
+    End Property
 
     'gibEntity
     Public Function gibAlsEinkPositionEntity() As EinkaufspositionEntity

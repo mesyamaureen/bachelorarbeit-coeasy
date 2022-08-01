@@ -86,14 +86,14 @@ Public Class Einkauf
         End Set
     End Property
 
-    'Public Property Coworker As Coworker
-    '    Get
-    '        Return mCoworker
-    '    End Get
-    '    Set(value As Coworker)
-    '        mCoworker = value
-    '    End Set
-    'End Property
+    Public Property Coworker As Coworker
+        Get
+            Return mCoworker
+        End Get
+        Set(value As Coworker)
+            mCoworker = value
+        End Set
+    End Property
 
     Public Property CoworkerID As Integer
         Get
