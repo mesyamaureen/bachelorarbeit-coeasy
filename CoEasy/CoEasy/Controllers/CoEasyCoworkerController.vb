@@ -7,9 +7,6 @@ Namespace Controllers
         Private Const CONCURRENCY_EXCEPTION As String = "DBUpdateConcurrencyException"
 
         ' GET: /MeineEinkaeufe
-        'important here: list Meine Einkaeufe must know to which logged in coworker it belongs to
-        'how does it know? from which angemeldeterBenutzer
-        'TO FIX: Relation between Einkauf and Coworker Entity -> Einkauf, Coworker / * 1
         Function MeineEinkaeufe() As ActionResult
             ' Deklaration
             Dim eEinkauf As Einkauf
@@ -22,13 +19,11 @@ Namespace Controllers
             ' Alle Jobanzeigen aus der Datenbank holen
             For Each eEntity In db.tblEinkauf.ToList
                 'Überprüfen, ob der Entity zum angemeldeten Coworker gehört
-                'If eEntity.EinkCoworkerIdFk.ToString().Equals(System.Web.HttpContext.Current.Session("BenutzerID")) Then
-                ' Objekt der Entity-Klasse in Objekt der Model-Klasse umwandeln
-                eEinkauf = New Einkauf(eEntity)
-
-                ' Objekt der Model-Klasse zur Liste hinzufügen
-                eListe.Einkauf.Add(eEinkauf)
-                ' End If
+                If eEntity.CoworkerIdFk.ToString() = System.Web.HttpContext.Current.Session("BenutzerID") Then
+                    eEinkauf = New Einkauf(eEntity)
+                    ' Objekt der Model-Klasse zur Liste hinzufügen
+                    eListe.Einkauf.Add(eEinkauf)
+                End If
             Next
 
             ' Gesamte list anzeigen

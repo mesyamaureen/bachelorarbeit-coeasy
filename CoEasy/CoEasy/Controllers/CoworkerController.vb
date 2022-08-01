@@ -51,7 +51,6 @@ Namespace Controllers
 
             'Jobanzeige aus dem ViewModel holen und in Jobanzeige entity umwandeln
             cow = pvmCow.Coworker
-            cow.BenutzerID = Web.HttpContext.Current.Session("BenutzerID")
             cowEntity = cow.gibAlsCowEntity
             'speichern vorbereiten
             db.tblCoworker.Attach(cowEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen

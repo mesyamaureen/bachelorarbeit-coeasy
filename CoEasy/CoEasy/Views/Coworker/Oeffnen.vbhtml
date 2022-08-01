@@ -122,7 +122,7 @@ End Code
                         </div>
 
                         @<div class="mb-lg-5 mt-lg-4">
-                            @*@Html.ActionLink("Abbrechen", "MeinProfilInfluencer", "InfluencerEinzeln", New With {.class = "btn btn-default", .role = "button"})*@
+                                @Html.ActionLink("Abbrechen", "AlleCoworkers", "AlleCoworkers", Nothing, New With {.class = "btn btn-default", .role = "button"})
                              <input type="submit" class="btn btn-outline-danger" value="Schließen" />
                         </div>
                     End Using

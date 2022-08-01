@@ -47,8 +47,9 @@ End Code
                         <table class="table table-striped table-bordered" id="Tabelle">
                             <tr class="header">
                                 <th>ID</th>
-                                <th>Bezeichnung</th>
-                                <th>Preis</th>
+                                <th>Benutzername</th>
+                                <th>Vorname</th>
+                                <th>Name</th>
                                 <th></th>
                             </tr>
 
