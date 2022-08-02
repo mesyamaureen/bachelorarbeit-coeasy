@@ -12,19 +12,13 @@ Namespace Controllers
             Dim cow As Coworker
             Dim cowEntity As CoworkerEntity
             Dim vmCow As CoworkerViewModel
-
-            'Datenbankzugriff über Entity Framework
-            cowEntity = db.tblCoworker.Find(ID) 'Datensatz mit diesem Primärschlüssel in tblInfluencer nachschlagen
+            cowEntity = db.tblCoworker.Find(ID)
 
             If cowEntity Is Nothing Then
-                Return New HttpNotFoundResult("Coworker mit der ID " & ID & " wurde nicht gefunden") 'wenn kein Coworker gefunden, laden
+                Return New HttpNotFoundResult("Coworker mit der ID " & ID & " wurde nicht gefunden")
             End If
-            'Gefundenen Datensatz aus der Datenbank loslösen
             db.Entry(cowEntity).State = EntityState.Detached
-            'Umwandeln in ein Objekt der Model-Klasse
             cow = New Coworker(cowEntity)
-
-            'Vorbereitung des View-Models
             vmCow = New CoworkerViewModel
             vmCow.Coworker = cow
             Return View(vmCow)
@@ -34,13 +28,10 @@ Namespace Controllers
         Function Neu() As ActionResult
             Dim cow As Coworker
             Dim vmCow As CoworkerViewModel
-
-            cow = New Coworker 'Neue leere Jobanzeige erzeugen
-
-            'ViewModel vorbereiten
+            cow = New Coworker
             vmCow = New CoworkerViewModel
             vmCow.Coworker = cow
-            Return View(vmCow) 'Neue Jobanzeige und Liste aller 
+            Return View(vmCow)
         End Function
 
         'POST: /Jobanzeige/Hinzufuegen
@@ -48,22 +39,16 @@ Namespace Controllers
         Function Neu(pvmCow As CoworkerViewModel) As ActionResult
             Dim cow As Coworker
             Dim cowEntity As CoworkerEntity
-
-            'Jobanzeige aus dem ViewModel holen und in Jobanzeige entity umwandeln
             cow = pvmCow.Coworker
             cowEntity = cow.gibAlsCowEntity
-            'speichern vorbereiten
-            db.tblCoworker.Attach(cowEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
-            db.Entry(cowEntity).State = EntityState.Added 'als Hinzugefügt markieren
-
-            'Vorsichtig Änderungen speichern
+            db.tblCoworker.Attach(cowEntity)
+            db.Entry(cowEntity).State = EntityState.Added
             Try
                 db.SaveChanges()
             Catch ex As Exception
-                'Im Fehlerfall wird der Fehler im ViewModel vermerkt
                 ModelState.AddModelError(String.Empty, "Hinzufügen war nicht erfolgreich.")
             End Try
-            Return RedirectToAction("AlleCoworkers", "AlleCoworkers") 'Zurück zur Übersicht über alle Jobanzeigen
+            Return RedirectToAction("AlleCoworkers", "AlleCoworkers")
         End Function
     End Class
 End Namespace

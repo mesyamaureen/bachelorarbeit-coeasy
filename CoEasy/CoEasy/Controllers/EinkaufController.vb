@@ -13,18 +13,12 @@ Namespace Controllers
             Dim eink As Einkauf
             Dim einkEntity As EinkaufEntity
             Dim vmEink As EinkaufViewModel = New EinkaufViewModel
-            'Datenbankzugriff über Entity Framework
-            einkEntity = db.tblEinkauf.Find(ID) 'Datensatz mit diesem Primärschlüssel in tblEinkauf nachschlagen
-
-            'gefundenen Datensatz aus der Datenbank loslösen
+            einkEntity = db.tblEinkauf.Find(ID)
             db.Entry(einkEntity).State = EntityState.Detached
-            'umwandeln in ein Objekt der Model-Klasse
             eink = New Einkauf(einkEntity)
-
-            'vorbereitung des View-Models
             vmEink.Einkauf = eink
 
-            Return View(vmEink) 'ViewModel mit Einkauf an die View zur Bearbeitung geben
+            Return View(vmEink)
         End Function
 
         'POST: Einkauf/Stornieren
@@ -50,32 +44,25 @@ Namespace Controllers
             Dim lstCoworkers As List(Of Coworker)
             Dim einkpos As Einkaufsposition
             Dim vmEink As EinkaufViewModel
-
             eink = New Einkauf 'Neue leere Modelle erzeugen
             einkpos = New Einkaufsposition
-
-            'Alle Tickets aus Datenbank laden
             lstTickets = New List(Of Ticket)
             For Each ticketEntity In db.tblTicket.ToList
                 ticket = New Ticket(ticketEntity)
                 lstTickets.Add(ticket)
             Next
 
-            'Alle Coworkers aus Datenbank laden
             lstCoworkers = New List(Of Coworker)
             For Each coworkerEntity In db.tblCoworker.ToList
                 coworker = New Coworker(coworkerEntity)
                 lstCoworkers.Add(coworker)
             Next
-
-            'ViewModel vorbereiten
             vmEink = New EinkaufViewModel
             vmEink.Einkauf = eink
             vmEink.ListeTickets = lstTickets
             vmEink.ListeCoworkers = lstCoworkers
             vmEink.Einkaufsposition = einkpos
             Return View(vmEink) 'Neuer Einkauf und Liste aller 
-            'Tickets und Coworkers als ViewModel an die View übergeben
         End Function
 
         'POST: /Einkauf/Neu
@@ -91,7 +78,7 @@ Namespace Controllers
             Dim einkposEntity As EinkaufspositionEntity
 
             If Not ModelState.IsValid Then
-                lstTickets = New List(Of Ticket) 'Alle Tickets aus Datenbank laden
+                lstTickets = New List(Of Ticket)
                 lstCoworkers = New List(Of Coworker)
                 einkpos = New Einkaufsposition
 

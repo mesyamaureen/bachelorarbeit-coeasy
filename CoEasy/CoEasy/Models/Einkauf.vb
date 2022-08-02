@@ -20,16 +20,14 @@ Public Class Einkauf
         mstrStatus = String.Empty
         mdatErstelldatum = Nothing
         mintCowID = -1
-        'mCoworker = New Coworker()
     End Sub
 
-    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pintCowId As Integer) ', pCoworker As Coworker)
+    Sub New(pintEinkaufID As Integer, pdblTotalpreis As Double, pstrStatus As String, pdatErstelldatum As Date, pintCowId As Integer)
         mintEinkaufID = pintEinkaufID
         mdblTotalpreis = pdblTotalpreis
         mstrStatus = pstrStatus
         mdatErstelldatum = pdatErstelldatum
         mintCowID = pintCowId
-        'mCoworker = pCoworker
     End Sub
 
     'Konstruktor: Entity
@@ -39,7 +37,6 @@ Public Class Einkauf
         mstrStatus = peinkEntity.Status
         mdatErstelldatum = peinkEntity.Erstelldatum
         mintCowID = peinkEntity.CoworkerIdFk
-        'mCoworker = New Coworker("", "", "", "", "", peinkEntity.CoworkerIdFk, "", "", "")
     End Sub
 
 
@@ -114,10 +111,6 @@ Public Class Einkauf
         einkE.Status = mstrStatus
         einkE.Totalpreis = mdblTotalpreis
         einkE.CoworkerIdFk = mintCowID
-        'einkE.CoworkerIdFk = mCoworker.BenutzerID
-        'If mCoworker IsNot Nothing Then
-        '    jobE.JaBrIdFk = mbrBranche.BrancheID
-        'End If
         Return einkE
     End Function
 

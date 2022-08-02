@@ -17,14 +17,10 @@ Namespace Controllers
             Dim wlanEntity As WLANEntity = New WLANEntity()
             Dim wlanCode As String = ""
             Dim wlanId As Integer = Nothing
-
             Dim vmEinkPos As EinkaufspositionViewModel
-
+            'ermitteln zu welchem Coworker
             Dim angemeldeterCoworker = Web.HttpContext.Current.Session("BenutzerID")
-            'Datenbank Zugriff über EF
-            'Dim queryEinkaufID = (From e In db.tblEinkauf
-            'Where e.CoworkerIdFk = angemeldeterCoworker
-            'Select Case e.EinkaufIdPk).FirstOrDefault 'möglicher Nachteil: wenn Einkauf ausgenutzt ist, wird es trotzdem angenommen
+            'ermitteln zu welchem Einkauf
             Dim lstEinkauf As List(Of Einkauf) = New List(Of Einkauf)
             For Each einkEntity In db.tblEinkauf.ToList
                 If einkEntity.CoworkerIdFk = angemeldeterCoworker Then
@@ -33,9 +29,7 @@ Namespace Controllers
                 End If
             Next
             Dim einkId As Integer = lstEinkauf.ElementAt(0).EinkaufID
-
-            'Anzahl in Einkaufsposition?
-            'find out ID Einkaufsposition
+            'ermitteln ID Einkaufsposition
             Dim lstEinkaufsposition As List(Of Einkaufsposition) = New List(Of Einkaufsposition)
             For Each einkposEntity In db.tblEinkaufsposition.ToList
                 If einkposEntity.EinkaufIdFk = einkId Then
@@ -46,8 +40,6 @@ Namespace Controllers
                     lstEinkaufsposition.Add(einkPos)
                 End If
             Next
-            'Dim anzahlWLAN As Integer = lstEinkaufsposition.ElementAt(0).AnzahlWLAN 'zugriff to Attribute AnzahlWLAN
-            ''wenn > 0, nimm ein Datensatz WLAN von DB
             If lstEinkaufsposition.ElementAt(0).AnzahlWLAN > 0 Then
                 wlanEntity = db.tblWLAN.ToList.ElementAt(0)
             End If
@@ -57,23 +49,15 @@ Namespace Controllers
                 wlanId = wlanEntity.WlanIdPk
             End If
 
-            ''wenn = 0, Meldungbox
-
-
             vmEinkPos = New EinkaufspositionViewModel()
             vmEinkPos.WlanCode = wlanCode
             vmEinkPos.WlanID = wlanId
             vmEinkPos.Einkaufsposition = lstEinkaufsposition.ElementAt(0)
+            'anzahl der WLAN vermindert
             vmEinkPos.Einkaufsposition.AnzahlWLAN = lstEinkaufsposition.ElementAt(0).AnzahlWLAN - 1
             db.Entry(wlanEntity).State = EntityState.Detached
             db.Entry(einkposChosenEntity).State = EntityState.Detached
-            'vmEinkPos.Wlan.WlanCode = wlanCode
-            'vmEinkPos.EinkaufID = queryEinkaufID.FirstOrDefault.EinkaufID
-
-            'vmJob = New JobanzeigeViewModel
-            'vmJob.Jobanzeige = job
-            'vmJob.ListeBranche = lstBranche
-            Return View(vmEinkPos) 'Neue Jobanzeige und Liste aller 
+            Return View(vmEinkPos)
         End Function
 
         <HttpPost>
@@ -81,7 +65,6 @@ Namespace Controllers
             Dim wlanEntity As WLANEntity
             Dim pEinkpos As Einkaufsposition
             Dim einkposEntity As EinkaufspositionEntity
-
             ' Wlan in WlanEntity umwandeln
             wlanEntity = pWlan.gibAlsWlanEntity()
             'Speichern vorbereiten
@@ -95,13 +78,8 @@ Namespace Controllers
             End Try
 
             'Einkaufspos in EinkaufsposEntity umwandeln
-            'Dim intAnzahlWlan As Integer
             pEinkpos = pvmEinkpos.Einkaufsposition
             einkposEntity = pEinkpos.gibAlsEinkPositionEntity()
-            'intAnzahlWlan = (einkposEntity.Anzahl) - 1
-            'einkposEntity.Anzahl = intAnzahlWlan
-
-            'speichern vorbereiten
             db.tblEinkaufsposition.Attach(einkposEntity) 'Objekt der Entity-Klasse wieder mit Datenbank bekannt machen
             db.Entry(einkposEntity).State = EntityState.Modified 'als geändert markieren
             'vorsichtig Änderungen speichern

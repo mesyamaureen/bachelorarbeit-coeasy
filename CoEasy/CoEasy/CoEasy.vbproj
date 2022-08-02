@@ -421,6 +421,7 @@
     <Content Include="Views\Coworker\Oeffnen.vbhtml" />
     <Content Include="Views\Coworker\Neu.vbhtml" />
     <Content Include="Views\Ticket\Loeschen.vbhtml" />
+    <Content Include="Views\Ticket\Neu.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

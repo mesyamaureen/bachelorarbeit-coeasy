@@ -42,7 +42,7 @@ Namespace Controllers
         Function Loeschen(ID As Integer) As ActionResult
             Dim tick As Ticket
             Dim tickEntity As TicketEntity
-            tickEntity = db.tblTicket.Find(ID) 'Jobanzeige in Datenbank finden
+            tickEntity = db.tblTicket.Find(ID)
 
             If tickEntity Is Nothing Then
                 Return New HttpNotFoundResult("Ticket mit der ID " & ID & " wurde nicht gefunden.")
@@ -51,27 +51,57 @@ Namespace Controllers
             db.Entry(tickEntity).State = EntityState.Detached
 
             tick = New Ticket(tickEntity)
-            Return View(tick) 'An die View geben, damit dort das Löschen bestätigt werden soll
+            Return View(tick)
         End Function
 
         'POST: /Ticket/Loeschen
         <HttpPost>
         Function Loeschen(pTicket As Ticket) As ActionResult
             Dim tickEntity As TicketEntity
-
-            ' Jobanzeige in JobanzeigeEntity umwandeln
             tickEntity = pTicket.gibAlsTicketEntity
             'Speichern vorbereiten
             db.tblTicket.Attach(tickEntity)
-            db.Entry(tickEntity).State = EntityState.Deleted 'als Gelöscht markieren
-            'Vorsichtig Änderungen speichern
+            db.Entry(tickEntity).State = EntityState.Deleted
             Try
                 db.SaveChanges()
             Catch ex As Exception
                 ModelState.AddModelError(String.Empty, "Löschen war nicht erfolgreich.")
             End Try
 
-            Return RedirectToAction("AlleTickets", "AlleTickets") 'Zurück zur Übersicht über alle Jobanzeigen
+            Return RedirectToAction("AlleTickets", "AlleTickets")
+        End Function
+
+        'GET: /Ticket/Neu
+        Function Neu() As ActionResult
+            Dim ticket As Ticket
+            Dim vmTicket As TicketViewModel
+
+            ticket = New Ticket
+
+            'ViewModel vorbereiten
+            vmTicket = New TicketViewModel
+            vmTicket.Ticket = ticket
+            Return View(vmTicket)
+        End Function
+
+        'POST: /Ticket/Neu
+        <HttpPost>
+        Function Neu(pvmCow As CoworkerViewModel) As ActionResult
+            Dim cow As Coworker
+            Dim cowEntity As CoworkerEntity
+            cow = pvmCow.Coworker
+            cowEntity = cow.gibAlsCowEntity
+            'speichern vorbereiten
+            db.tblCoworker.Attach(cowEntity)
+            db.Entry(cowEntity).State = EntityState.Added 'als Hinzugefügt markieren
+
+            'Vorsichtig Änderungen speichern
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                ModelState.AddModelError(String.Empty, "Hinzufügen war nicht erfolgreich.")
+            End Try
+            Return RedirectToAction("AlleCoworkers", "AlleCoworkers")
         End Function
 
     End Class

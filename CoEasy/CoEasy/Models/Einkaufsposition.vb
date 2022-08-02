@@ -19,34 +19,26 @@ Public Class Einkaufsposition
         mintEinkaufspositionID = -1
         mintAnzahlWLAN = Nothing
         mdblTotalpreis = Nothing
-        'mTicket = Nothing
-        'mstrTicket = String.Empty
-        'mTicket = New Ticket()
-        'mEinkauf = New Einkauf()
+
         mintEinkaufId = -1
         mintTicketId = -1
     End Sub
 
-    Sub New(pintEinkaufspositionID As Integer, pintAnzahlWLAN As Integer, pdblTotalpreis As Double, pintEinkaufId As Integer, pintTicketId As Integer) 'pTicket As Ticket, pEinkauf As Einkauf) 'pstrTicket As String
+    Sub New(pintEinkaufspositionID As Integer, pintAnzahlWLAN As Integer, pdblTotalpreis As Double, pintEinkaufId As Integer, pintTicketId As Integer)
         mintEinkaufspositionID = pintEinkaufspositionID
         mintAnzahlWLAN = pintAnzahlWLAN
         mdblTotalpreis = pdblTotalpreis
-        'mTicket = pTicket
         mintEinkaufId = pintEinkaufId
         mintTicketId = pintTicketId
-        'mEinkauf = pEinkauf
     End Sub
 
     'Konstruktor Entity
-    Sub New(peinkposEntity As EinkaufspositionEntity) 'einkaufspositionIdFk As Object, 
+    Sub New(peinkposEntity As EinkaufspositionEntity)
         mintEinkaufspositionID = peinkposEntity.EinkaufspositionIdPk
         mintAnzahlWLAN = peinkposEntity.Anzahl
         mdblTotalpreis = peinkposEntity.Totalpreis
-        'mTicket.TicketID = peinkposEntity.TicketIdFk
-        'mEinkauf = New Einkauf(peinkposEntity.EinkaufIdFk, Nothing, "", Nothing, Nothing)
         mintEinkaufId = peinkposEntity.EinkaufIdFk
         mintTicketId = peinkposEntity.TicketIdFk
-        'mTicket = New Ticket(peinkposEntity.TicketIdFk, "", Nothing)
     End Sub
 
     Public Property EinkaufspositionID As Integer
@@ -109,15 +101,6 @@ Public Class Einkaufsposition
         End Set
     End Property
 
-    'Public Property Einkaeufe As List(Of Einkauf)
-    '    Get
-    '        Return mEinkaeufe
-    '    End Get
-    '    Set(value As List(Of Einkauf))
-    '        mEinkaeufe = value
-    '    End Set
-    'End Property
-
     Public Property Einkauf As Einkauf
         Get
             Return mEinkauf
@@ -143,17 +126,9 @@ Public Class Einkaufsposition
 
         einkPosEntity.EinkaufspositionIdPk = mintEinkaufspositionID
         einkPosEntity.Anzahl = mintAnzahlWLAN
-        'einkPosEntity.TicketIdFk = mTicket.TicketID
         einkPosEntity.Totalpreis = mdblTotalpreis
-
-        'If mEinkauf IsNot Nothing And mTicket IsNot Nothing Then
-        '    einkPosEntity.EinkaufIdFk = mEinkauf.EinkaufID
-        '    einkPosEntity.TicketIdFk = mTicket.TicketID
-        'End If
         einkPosEntity.EinkaufIdFk = mintEinkaufId
         einkPosEntity.TicketIdFk = mintTicketId
-        'einkPosEntity.EinkaufIdFk = mEinkauf.EinkaufID
-        'einkPosEntity.TicketIdFk = mTicket.TicketID
         Return einkPosEntity
     End Function
 End Class

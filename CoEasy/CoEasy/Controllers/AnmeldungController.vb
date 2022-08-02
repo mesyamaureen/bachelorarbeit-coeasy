@@ -20,7 +20,6 @@ Namespace Controllers
         Function Einloggen(pben As Benutzer) As ActionResult
             If ModelState.IsValid Then
                 Using db As CoEasy_Database = New CoEasy_Database
-                    'Dim infl As InfluencerEntity
                     Dim benCoworker As CoworkerEntity
                     Try
                         For Each cow In db.tblCoworker.ToList
@@ -39,7 +38,6 @@ Namespace Controllers
                         System.Web.HttpContext.Current.Session("Benutzertyp") = "Coworker"
                         Return RedirectToAction("MeineEinkaeufe", "CoEasyCoworker")
                     Else
-                        'Dim mit As MitarbeiterEntity
                         Dim benMit As MitarbeiterEntity
 
                         For Each mit In db.tblMitarbeiter.ToList

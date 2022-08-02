@@ -65,6 +65,9 @@ End Code
                             Next
                         </table>
                     </div>
+                    <div class="text-center mb-lg-5">
+                        @Html.ActionLink("Neu", "Neu", "Ticket", Nothing, New With {.class = "btn btn-primary", .role = "button"})
+                    </div>
                 </div>
             </div>
         </div>

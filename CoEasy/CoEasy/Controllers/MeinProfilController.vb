@@ -18,7 +18,6 @@ Namespace Controllers
             Dim mitEntity As MitarbeiterEntity
             Dim vmMit As MitarbeiterViewModel
 
-            'Datenbankzugriff über Entity Framework
             mitEntity = db.tblMitarbeiter.Find(ID) 'Datensatz mit diesem Primärschlüssel in tblMitarbeiter nachschlagen
 
             If mitEntity Is Nothing Then
@@ -52,7 +51,6 @@ Namespace Controllers
                 Return View(pvmMit)
             End If
 
-            'Influencer aus dem ViewModel holen und in InfluencerEntity umwandeln
             mit = pvmMit.Mitarbeiter
             mitEntity = mit.gibMitarbeiterEntity
             'Speichern vorbereiten
@@ -66,8 +64,6 @@ Namespace Controllers
                 'Im Fehlerfall wird der Fehler im ViewModel vermerkt
                 ModelState.AddModelError(String.Empty, "Bearbeiten war nicht erfolgreich.")
             End Try
-
-            'Return RedirectToAction("Einkaeufe", "CoEasy") 'Zurück zur Übersicht über das Profil
             Return View(pvmMit)
         End Function
     End Class
